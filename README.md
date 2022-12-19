@@ -1,9 +1,3 @@
-
-                                                                      |
-                                                                      |
-                                                                      |
-                                                                      |
-
 Raspberry Pi controller
 =======================
 
