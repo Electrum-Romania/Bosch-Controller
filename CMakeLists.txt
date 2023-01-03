@@ -17,6 +17,7 @@ add_executable(
 	iotasks/iotask.cpp
 	iotasks/sensors/camera/camera.cpp
 	iotasks/sinks/window_feed/window_feed.cpp
+	iotasks/sinks/web_feed/web_feed.cpp
 
 	ptasks/ptask.cpp
 	ptasks/pool.cpp

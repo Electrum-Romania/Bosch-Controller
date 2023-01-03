@@ -3,6 +3,7 @@
 #include "iotasks/iotask.h"
 #include "iotasks/sensors/camera/camera.h"
 #include "iotasks/sinks/window_feed/window_feed.h"
+#include "iotasks/sinks/web_feed/web_feed.h"
 
 #include "ptasks/ptask.h"
 #include "ptasks/pool.h"
@@ -65,6 +66,7 @@ void sched()
 	ptasks_L1.push_back(new LaneDetection());
 
 	sinks.push_back(new WindowFeed("Feed"));
+	sinks.push_back(new WebFeed());
 
 	std::vector<std::thread> sensor_threads = launch_io(sensors);
 	std::vector<std::thread> sink_threads = launch_io(sinks);
