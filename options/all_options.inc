@@ -1,3 +1,5 @@
+DEFINE_OPTION(std::string, web_feed_post_server,         "192.168.59.35:8000");
+DEFINE_OPTION(std::string, web_feed_post_raw_image_path, "/updateImage/");
 DEFINE_OPTION(int, lane_detection_crop_floor, 0);
 DEFINE_OPTION(int, lane_detection_crop_roof, 250);
 DEFINE_OPTION(int, lane_detection_crop_x_start, 200);
