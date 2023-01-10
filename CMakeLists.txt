@@ -26,7 +26,9 @@ add_executable(
 	options/options_manager.cpp
 )
 
-target_link_libraries(controller ${OpenCV_LIBS})
+message(STATUS "Using library for SocketCAN samples: ${OpenCV_LIBS}")
+
+target_link_libraries(controller ${OpenCV_LIBS} sockpp)
 
 target_compile_features(controller PRIVATE cxx_std_20)
 

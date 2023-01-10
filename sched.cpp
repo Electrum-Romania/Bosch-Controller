@@ -66,7 +66,7 @@ void sched()
 	ptasks_L1.push_back(new LaneDetection());
 
 	sinks.push_back(new WindowFeed("Feed"));
-	sinks.push_back(new WebFeed());
+	sinks.push_back(new WebFeed("10.0.253.140", 2244));
 
 	std::vector<std::thread> sensor_threads = launch_io(sensors);
 	std::vector<std::thread> sink_threads = launch_io(sinks);
@@ -115,6 +115,6 @@ void sched()
 
 		auto duration = chrono::duration_cast<chrono::milliseconds>(stop - start);
 
-		std::cerr << "\033[1K\r" << duration;
+		//std::cerr << "\033[1K\r" << duration;
 	}
 }
