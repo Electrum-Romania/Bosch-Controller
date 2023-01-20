@@ -65,7 +65,7 @@ void sched()
 
 	ptasks_L1.push_back(new LaneDetection());
 
-	sinks.push_back(new WindowFeed("Feed"));
+	//sinks.push_back(new WindowFeed("Feed"));
 	sinks.push_back(new WebFeed("10.0.253.140", 2244));
 
 	std::vector<std::thread> sensor_threads = launch_io(sensors);

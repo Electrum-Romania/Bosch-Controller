@@ -1,7 +1,5 @@
 #include "web_feed.h"
 
-#include "httplib.h"
-
 
 #if 0
 WebFeed::WebFeed()
@@ -53,10 +51,10 @@ void WebFeed::compute_frame()
 
 	uint32_t raw_image_len = raw_image.size();
 	uint8_t  raw_image_len_encoded[4] = {
-		(raw_image_len >> 24) & 0xff,
-		(raw_image_len >> 16) & 0xff,
-		(raw_image_len >>  8) & 0xff,
-		(raw_image_len      ) & 0xff
+		static_cast<uint8_t>((raw_image_len >> 24) & 0xff),
+		static_cast<uint8_t>((raw_image_len >> 16) & 0xff),
+		static_cast<uint8_t>((raw_image_len >>  8) & 0xff),
+		static_cast<uint8_t>((raw_image_len      ) & 0xff)
 	};
 
 	std::cerr << "ready to send image of size " << raw_image_len << std::endl;

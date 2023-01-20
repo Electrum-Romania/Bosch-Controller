@@ -8,7 +8,6 @@
 
 class WebFeed : public IOtask {
 private:
-	sockpp::socket_initializer sockInit;
 	sockpp::tcp_connector      conn;
 
 	bool dead;
