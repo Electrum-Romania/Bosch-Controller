@@ -11,6 +11,8 @@
 
 #include "options/options_manager.h"
 
+#include <cassert>
+
 #include <chrono>
 #include <thread>
 
@@ -36,7 +38,7 @@ std::vector<std::thread> launch_io(std::vector<IOtask *>& iotasks)
 static
 std::latch* call_io(std::vector<IOtask *>& iotasks, Pdata* pdata, const Options* opt)
 {
-	std::latch* l = new std::latch(iotasks.size());
+	auto l = new std::latch(static_cast<std::ptrdiff_t>(iotasks.size()));
 
 	for (auto s : iotasks)
 		s->frame(pdata, opt, l);
@@ -46,11 +48,14 @@ std::latch* call_io(std::vector<IOtask *>& iotasks, Pdata* pdata, const Options*
 
 void await_io(std::latch* l)
 {
-	l->wait();
+    assert(l != nullptr);
+
+    l->wait();
 
 	delete l;
 }
 
+[[noreturn]]
 void sched()
 {
 	OptionsManager opt_manager;
@@ -65,13 +70,13 @@ void sched()
 
 	ptasks_L1.push_back(new LaneDetection());
 
-	//sinks.push_back(new WindowFeed("Feed"));
-	sinks.push_back(new WebFeed("10.0.253.140", 2244));
+	sinks.push_back(new WindowFeed("Feed"));
+	//sinks.push_back(new WebFeed("10.0.253.140", 2244));
 
 	std::vector<std::thread> sensor_threads = launch_io(sensors);
 	std::vector<std::thread> sink_threads = launch_io(sinks);
 
-	Pdata *pdata = new Pdata;
+	auto pdata = new Pdata;
 	Options *opt = opt_manager.get_options();
 
 	std::latch* sensor_latch = call_io(sensors, pdata, opt);
@@ -106,15 +111,15 @@ void sched()
 
 		sinks_latch = call_io(sinks, pdata, opt);
 
-		old_pdata = pdata;
-		old_opt = opt;
-		pdata = next_pdata;
-		opt = next_opt;
-
 		auto stop = chrono::high_resolution_clock::now();
 
 		auto duration = chrono::duration_cast<chrono::milliseconds>(stop - start);
 
-		//std::cerr << "\033[1K\r" << duration;
+		Ptask::print_timings(pdata, duration.count());
+
+        old_pdata = pdata;
+        old_opt = opt;
+        pdata = next_pdata;
+        opt = next_opt;
 	}
 }

@@ -5,7 +5,9 @@
 
 class LaneDetection : public Ptask {
 public:
-	void compute(Pdata*, const Options*) override;
+    LaneDetection();
+
+    void compute(Pdata*, const Options*) override;
 };
 
 #endif

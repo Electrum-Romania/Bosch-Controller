@@ -24,7 +24,7 @@ void PtaskPool::worker_loop()
 
 		lock.unlock();
 
-		job.ptask->compute(job.pdata, job.options);
+		job.ptask->run(job.pdata, job.options);
 
 		job.done.count_down();
 	}

@@ -8,7 +8,7 @@
 
 class WebFeed : public IOtask {
 private:
-	sockpp::tcp_connector      conn;
+	sockpp::tcp_connector conn;
 
 	bool dead;
 	

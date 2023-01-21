@@ -24,7 +24,11 @@ add_executable(
 	ptasks/lane_detection/lane_detection.cpp
 
 	options/options_manager.cpp
+
+	utils/serial/serial.cpp
+	utils/serial/serial.h
 )
+
 
 message(STATUS "Using library for SocketCAN samples: ${OpenCV_LIBS}")
 

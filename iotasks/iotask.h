@@ -23,7 +23,7 @@ public:
 
 	virtual void compute_frame() = 0;
 
-	void run();
+    [[noreturn]] void run();
 	bool frame(Pdata*, const Options*, std::latch*);
 };
 

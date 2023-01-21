@@ -3,7 +3,11 @@
 #include <chrono>
 #include <opencv2/opencv.hpp>
 
-namespace chrono = std::chrono;
+
+LaneDetection::LaneDetection() : Ptask("LaneDetection") {
+
+}
+
 
 cv::Mat triangle_mask(cv::Size size, int p1_x, int p1_y, int p2_x, int p2_y, int p3_x, int p3_y)
 {
@@ -26,8 +30,6 @@ cv::Mat triangle_mask(cv::Size size, int p1_x, int p1_y, int p2_x, int p2_y, int
 
 void LaneDetection::compute(Pdata* pdata, const Options* options)
 {
-	auto start = chrono::high_resolution_clock::now();
-
 	cv::Mat grayscale_image;
 	cv::cvtColor(pdata->camera_image, grayscale_image, cv::COLOR_BGR2GRAY);
 
@@ -62,11 +64,5 @@ void LaneDetection::compute(Pdata* pdata, const Options* options)
 	cv::bitwise_and(canny_image, mask, masked_image);
 
 	cv::HoughLinesP(masked_image, pdata->lanes, 1, CV_PI/180, 100, 50, 10);
-
-	auto stop = chrono::high_resolution_clock::now();
-
-	auto duration = chrono::duration_cast<chrono::milliseconds>(stop - start);
-
-	std::cerr << "\033[1K\r" << duration;
 }
 

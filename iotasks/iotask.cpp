@@ -8,8 +8,9 @@ IOtask::IOtask()
 	: busy(false), give_frame(0), done_frame(nullptr), pdata(nullptr), options(nullptr)
 {}
 
-IOtask::~IOtask() {}
+IOtask::~IOtask() = default;
 
+[[noreturn]]
 void IOtask::run()
 {
 	for (;;) {

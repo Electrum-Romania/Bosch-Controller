@@ -10,13 +10,14 @@ private:
 	std::string name;
 
 public:
-	Ptask(std::string name);
+	explicit Ptask(std::string name);
+
+    ~Ptask();
 
 	virtual void compute(Pdata*, const Options*) = 0;
-
 	void run(Pdata*, const Options*);
 
-	~Ptask();
+    static void print_timings(Pdata*, int64_t);
 };
 
 #endif

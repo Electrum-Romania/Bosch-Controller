@@ -1,6 +1,6 @@
 #include <sockpp/socket.h>
 
-void sched();
+[[noreturn]] void sched();
 
 int main()
 {
