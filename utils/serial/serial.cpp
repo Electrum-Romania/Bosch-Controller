@@ -6,7 +6,6 @@
 
 #include <iomanip>
 #include <iostream>
-#include <sstream>
 
 #include <fcntl.h>
 
@@ -95,10 +94,13 @@ struct {
         {2, {'d', 'd'}}
 };
 
-ssize_t Serial::write_command(int command_number, ...)
+ssize_t Serial::write_command(Command command, ...)
 {
     std::va_list args;
-    va_start(args, command_number);
+
+    int command_number = (int) command;
+
+    va_start(args, (int) command);
 
     std::ostringstream output;
 
@@ -107,10 +109,10 @@ ssize_t Serial::write_command(int command_number, ...)
     for (int i = 0; i < command_args[command_number].nargs; i++) {
         switch (command_args[command_number].args[i]) {
             case 'f':
-                output << std::setw(4) << std::setprecision(5) << va_arg(args, double) << ';';
+                output << std::fixed << std::setprecision(2) << va_arg(args, double) << ';';
                 break;
             case 'd':
-                output << std::setw(4) << std::setprecision(5) << va_arg(args, double) << ';';
+                output << std::fixed << std::setprecision(5) << va_arg(args, double) << ';';
                 break;
             case 'b':
                 output << va_arg(args, int) << ';';

@@ -9,15 +9,25 @@ private:
     int fd;
 
 public:
+    enum class Command {
+        SPED = 1,
+        STER = 2,
+        BRAK = 3,
+        PIDA = 4,
+        ENPB = 5,
+        PIDS = 6,
+        MOVE = 7,
+    };
+
     explicit Serial(const char *file = "/dev/ttyACM0", speed_t baud_rate = B19200);
 
     ssize_t raw_write(const void *data, size_t size);
 
-    ssize_t write_command(int command_number, float arg);
+    //ssize_t write_command(int command_number, float arg);
 
-    ssize_t write_command(int command_number, bool arg);
+    //ssize_t write_command(int command_number, bool arg);
 
-    ssize_t write_command(int command_number, ...);
+    ssize_t write_command(Command command_number, ...);
 };
 
 //
@@ -30,12 +40,5 @@ public:
 // 'PIDS'    : [ ['kp', 'ki', 'kd', 'tf' ],   [float, float, float, float],   [True]                 ] - Pass PID values -
 // 'MOVE'    : [ ['distance', 'speed'],       [float, float],                 [True]                 ] - Set distance to travel and the speed -
 
-constexpr int COMMAND_SPED = 1;
-constexpr int COMMAND_STER = 2;
-constexpr int COMMAND_BRAK = 3;
-constexpr int COMMAND_PIDA = 4;
-constexpr int COMMAND_ENPB = 5;
-constexpr int COMMAND_PIDS = 6;
-constexpr int COMMAND_MOVE = 7;
 
 #endif // UTILS_SERIAL_H

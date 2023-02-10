@@ -1,1 +1,1 @@
-std::map<std::string, int64_t> timings;
+std::unordered_ map<std::string, int64_t> timings;

@@ -1,6 +1,8 @@
 #ifndef CONTROLLER_H
 #define CONTROLLER_H
 
+#include <unordered_map>
+
 #include <opencv2/opencv.hpp>
 
 #define DEFINE_OPTION_DECLARE(T, DEC, VAL) T DEC;
