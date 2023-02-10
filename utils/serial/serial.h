@@ -3,6 +3,7 @@
 
 #include <termios.h>
 #include <unistd.h>
+#include <string>
 
 class Serial {
 private:
@@ -19,6 +20,8 @@ public:
         MOVE = 7,
     };
 
+    FILE *readbuf;
+
     explicit Serial(const char *file = "/dev/ttyACM0", speed_t baud_rate = B19200);
 
     ssize_t raw_write(const void *data, size_t size);
@@ -28,6 +31,8 @@ public:
     //ssize_t write_command(int command_number, bool arg);
 
     ssize_t write_command(Command command_number, ...);
+
+    std::string read_response();
 };
 
 //

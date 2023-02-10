@@ -50,6 +50,8 @@ Serial::Serial(const char *file, speed_t baud_rate) {
         std::cerr << "Could not raw_write tty attributes: " << std::strerror(errno) << std::endl;
         return;
     }
+
+    readbuf = fdopen(fd, "rb");
 }
 
 ssize_t Serial::raw_write(const void *data, size_t size) {
@@ -100,7 +102,7 @@ ssize_t Serial::write_command(Command command, ...)
 
     int command_number = (int) command;
 
-    va_start(args, (int) command);
+    va_start(args, command_args[command_number].nargs);
 
     std::ostringstream output;
 
@@ -109,13 +111,13 @@ ssize_t Serial::write_command(Command command, ...)
     for (int i = 0; i < command_args[command_number].nargs; i++) {
         switch (command_args[command_number].args[i]) {
             case 'f':
-                output << std::fixed << std::setprecision(2) << va_arg(args, double) << ';';
+                output << std::fixed << std::setprecision(2) << va_arg(args, double) << ";";
                 break;
             case 'd':
-                output << std::fixed << std::setprecision(5) << va_arg(args, double) << ';';
+                output << std::fixed << std::setprecision(5) << va_arg(args, double) << ";";
                 break;
             case 'b':
-                output << va_arg(args, int) << ';';
+                output << va_arg(args, int) << ";";
                 break;
         }
     }
@@ -125,4 +127,13 @@ ssize_t Serial::write_command(Command command, ...)
     std::string str = output.str();
 
     return raw_write(str.c_str(), str.length());
+}
+
+std::string Serial::read_response() {
+
+    char msg[256], id;
+
+    std::fscanf(readbuf, "@%c:%255s\r\n", &id, msg);
+
+    return {msg};
 }
