@@ -39,8 +39,8 @@ Serial::Serial(const char *file, speed_t baud_rate) {
     tty.c_iflag &= ~(IGNBRK|BRKINT|PARMRK|ISTRIP|INLCR|IGNCR|ICRNL);
     tty.c_oflag &= ~OPOST;
     tty.c_oflag &= ~ONLCR;
-    tty.c_cc[VTIME] = 10;
-    tty.c_cc[VMIN] = 1;
+    //tty.c_cc[VTIME] = 10;
+    //tty.c_cc[VMIN] = 1;
 
     cfsetispeed(&tty, baud_rate);
     cfsetospeed(&tty, baud_rate);
@@ -50,8 +50,6 @@ Serial::Serial(const char *file, speed_t baud_rate) {
         std::cerr << "Could not raw_write tty attributes: " << std::strerror(errno) << std::endl;
         return;
     }
-
-    readbuf = fdopen(fd, "rb");
 }
 
 ssize_t Serial::raw_write(const void *data, size_t size) {
@@ -122,18 +120,78 @@ ssize_t Serial::write_command(Command command, ...)
         }
     }
 
-    output << "\r\n";
+    output << ";\r\n";
 
     std::string str = output.str();
 
     return raw_write(str.c_str(), str.length());
 }
 
-std::string Serial::read_response() {
+int Serial::read_char() const
+{
+    char b;
+    ssize_t ret;
 
-    char msg[256], id;
+    ret = read(fd, &b, 1);
 
-    std::fscanf(readbuf, "@%c:%255s\r\n", &id, msg);
+    if (ret < 0) {
+        std::cerr << "Serial read error: " << std::strerror(errno) << std::endl;
+        return -1;
+    }
+
+    if (ret == 0)
+        return -1;
+
+    //std::cout << "read " << b << " (" << (int) (std::uint8_t) b << ")" << std::endl;
+
+    return b;
+}
+
+void Serial::consume_char(char expected) {
+    int c;
+
+    if ((c = read_char()) != expected) {
+        if (c == -1) {
+            std::cerr << "Serial closed unexpectedly" << std::endl;
+        } else {
+            if (expected != '\0')
+                std::cerr << "Unexpected '" << (char) c << "' in serial stream (expected '" << expected << "')" << std::endl;
+        }
+    }
+}
+
+std::string Serial::read_response()
+{
+    int c, i;
+    char msg[256];
+
+    consume_char('@');
+    //consume_char('\0');
+    //consume_char(':');
+
+    for (i = 0; i < 255 && ((c = read_char()) != '\r') && c != -1; i++) {
+        msg[i] = (char) c;
+    }
+
+    msg[i] = '\0';
+
+    consume_char('\n');
+
+    return {msg};
+}
+
+std::string Serial::read_line()
+{
+    int c, i;
+    char msg[256];
+
+    for (i = 0; i < 255 && ((c = read_char()) != '\r') && c != -1; i++) {
+        msg[i] = (char) c;
+    }
+
+    msg[i] = '\0';
+
+    consume_char('\n');
 
     return {msg};
 }

@@ -9,6 +9,12 @@ class Serial {
 private:
     int fd;
 
+    void consume_char(char expected);
+
+    int read_char() const;
+
+    ssize_t raw_write(const void *data, size_t size);
+
 public:
     enum class Command {
         SPED = 1,
@@ -20,11 +26,7 @@ public:
         MOVE = 7,
     };
 
-    FILE *readbuf;
-
     explicit Serial(const char *file = "/dev/ttyACM0", speed_t baud_rate = B19200);
-
-    ssize_t raw_write(const void *data, size_t size);
 
     //ssize_t write_command(int command_number, float arg);
 
@@ -33,6 +35,8 @@ public:
     ssize_t write_command(Command command_number, ...);
 
     std::string read_response();
+
+    std::string read_line();
 };
 
 //

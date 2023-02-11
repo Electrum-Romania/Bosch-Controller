@@ -2,13 +2,21 @@
 
 #include "utils/serial/serial.h"
 
+#include <cmath>
+
+#include <iostream>
+
 [[noreturn]] void sched();
 
 void test_serial()
 {
-    Serial serial("/dev/stdin", B38400);
+    Serial serial;
 
-    serial.write_command(Serial::Command::SPED, 0.1);
+    for (double i = 0.0; i < 5.0; i += 0.1) {
+        serial.write_command(Serial::Command::SPED, i);
+
+        std::cout << i << " " << serial.read_response() << std::endl;
+    }
 }
 
 int main()
@@ -17,5 +25,5 @@ int main()
 
     test_serial();
 
-	sched();
+	//sched();
 }
