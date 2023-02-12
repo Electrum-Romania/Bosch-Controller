@@ -23,7 +23,7 @@ int main()
 {
     sockpp::initialize();
 
-    test_serial();
+    //test_serial();
 
-	//sched();
+	sched();
 }

@@ -70,8 +70,8 @@ void sched()
 
 	ptasks_L1.push_back(new LaneDetection());
 
-	sinks.push_back(new WindowFeed("Feed"));
-	//sinks.push_back(new WebFeed("10.0.253.140", 2244));
+	//sinks.push_back(new WindowFeed("Feed"));
+	sinks.push_back(new WebFeed("10.0.253.140", 2244, 2255));
 
 	std::vector<std::thread> sensor_threads = launch_io(sensors);
 	std::vector<std::thread> sink_threads = launch_io(sinks);
