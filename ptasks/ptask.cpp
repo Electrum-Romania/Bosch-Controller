@@ -31,7 +31,7 @@ void Ptask::print_timings(Pdata *pdata, int64_t total_time) {
     if (i++ % 10 != 0)
         return;
 
-    std::cerr << "\033[2J\033[f";
+    std::cerr << "\033[2J\033[callback";
     std::cerr << "Timings\n";
 
     for (auto const& [task, time]: pdata->timings) {

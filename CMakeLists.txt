@@ -27,7 +27,7 @@ add_executable(
 
 	utils/serial/serial.cpp
 	utils/serial/serial.h
-)
+		utils/command_socket/command_socket.cpp utils/command_socket/command_socket.h utils/command_socket/line_reader.cpp utils/command_socket/line_reader.h)
 
 
 message(STATUS "Using library for SocketCAN samples: ${OpenCV_LIBS}")
