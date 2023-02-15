@@ -6,7 +6,7 @@
 
 #include "line_reader.h"
 
-typedef void (*command_callback) (void *, std::string);
+typedef void (*command_callback) (void *, const std::string&, const std::string&);
 
 class command_socket {
 private:

@@ -8,6 +8,7 @@ command_socket::command_socket(const std::string& host, uint16_t port)
 
 void command_socket::register_command(const std::string& cname, void *object, command_callback f)
 {
+    std::cout << "registering command " << cname << std::endl;
     commands.insert({cname, {object, f}});
 }
 
@@ -29,9 +30,9 @@ void command_socket::run()
         std::string cname = line.substr(0, delimiter_positon);
         std::string arg = line.substr(delimiter_positon + 1, line.length() - 2);
 
-        const command &c = commands[cname];
+        const command &c = commands.at(cname);
 
-        c.callback(c.object, arg);
+        c.callback(c.object, cname, arg);
     }
 }
 

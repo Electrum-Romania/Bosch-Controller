@@ -20,17 +20,17 @@ void test_serial()
     }
 }
 
-void cb(void *, std::string arg)
+void cb(void *, const std::string&, const std::string& arg)
 {
     std::cout << "(" << arg << ")" << std::endl;
 }
 
-command_socket cs("127.0.0.1", 2002);
+//command_socket cs("127.0.0.1", 2002);
 
-void test_command_socket()
+/*void test_command_socket()
 {
     cs.register_command("PRINT", nullptr, cb);
-}
+}*/
 
 int main()
 {
@@ -38,7 +38,7 @@ int main()
 
     //test_serial();
 
-    test_command_socket();
+    //test_command_socket();
 
 	sched();
 }

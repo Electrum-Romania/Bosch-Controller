@@ -10,6 +10,9 @@
 #include "ptasks/lane_detection/lane_detection.h"
 
 #include "options/options_manager.h"
+#include "iotasks/sensors/keyboard/keyboard.h"
+#include "utils/serial/serial.h"
+#include "iotasks/sinks/motors/motors.h"
 
 #include <cassert>
 
@@ -58,7 +61,8 @@ void await_io(std::latch* l)
 [[noreturn]]
 void sched()
 {
-	OptionsManager opt_manager;
+    command_socket cs("127.0.0.1", 2002);
+	OptionsManager opt_manager(cs);
 
 	PtaskPool ptask_pool;
 
@@ -67,11 +71,14 @@ void sched()
 	std::vector<IOtask*> sinks;
 
 	sensors.push_back(new Camera());
+    sensors.push_back(new Keyboard(cs));
 
 	ptasks_L1.push_back(new LaneDetection());
 
 	//sinks.push_back(new WindowFeed("Feed"));
 	sinks.push_back(new WebFeed("127.0.0.1", 2244, 2255));
+    Serial nucleo("/dev/pts/4", B38400);
+    sinks.push_back(new Motors(nucleo));
 
 	std::vector<std::thread> sensor_threads = launch_io(sensors);
 	std::vector<std::thread> sink_threads = launch_io(sinks);

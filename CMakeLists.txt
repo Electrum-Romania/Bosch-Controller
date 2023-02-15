@@ -1,36 +1,47 @@
 cmake_minimum_required(VERSION 3.1...3.25)
 
 project(
-	ControllerProject
-	VERSION 1.0
-	LANGUAGES CXX
+		ControllerProject
+		VERSION 1.0
+		LANGUAGES CXX
 )
 
 find_package(OpenCV REQUIRED)
 
 add_executable(
-	controller
+		controller
 
-	main.cpp
-	sched.cpp
+		main.cpp
+		sched.cpp
 
-	iotasks/iotask.cpp
-	iotasks/sensors/camera/camera.cpp
-	iotasks/sinks/window_feed/window_feed.cpp
-	iotasks/sinks/web_feed/web_feed.cpp
+		controller.h
 
-	ptasks/ptask.cpp
-	ptasks/pool.cpp
-	ptasks/lane_detection/lane_detection.cpp
+		iotasks/iotask.cpp
+		iotasks/iotask.h
+		iotasks/sensors/camera/camera.cpp
+		iotasks/sensors/camera/camera.h
+		iotasks/sinks/window_feed/window_feed.cpp
+		iotasks/sinks/window_feed/window_feed.h
+		iotasks/sinks/web_feed/web_feed.cpp
+		iotasks/sinks/web_feed/web_feed.h
 
-	options/options_manager.cpp
+		ptasks/ptask.cpp
+		ptasks/ptask.h
+		ptasks/pool.cpp
+		ptasks/pool.h
+		ptasks/lane_detection/lane_detection.cpp
+		ptasks/lane_detection/lane_detection.h
 
-	utils/serial/serial.cpp
-	utils/serial/serial.h
-		utils/command_socket/command_socket.cpp utils/command_socket/command_socket.h utils/command_socket/line_reader.cpp utils/command_socket/line_reader.h)
+		options/options_manager.cpp
+		options/options_manager.h
 
-
-message(STATUS "Using library for SocketCAN samples: ${OpenCV_LIBS}")
+		utils/serial/serial.cpp
+		utils/serial/serial.h
+		utils/command_socket/command_socket.cpp
+		utils/command_socket/command_socket.h
+		utils/command_socket/line_reader.cpp
+		utils/command_socket/line_reader.h
+		iotasks/sensors/keyboard/keyboard.cpp iotasks/sensors/keyboard/keyboard.h iotasks/sinks/motors/motors.cpp iotasks/sinks/motors/motors.h)
 
 target_link_libraries(controller ${OpenCV_LIBS} sockpp)
 

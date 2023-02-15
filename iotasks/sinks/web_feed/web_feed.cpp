@@ -73,6 +73,4 @@ void WebFeed::write_jpeg_to_connection(std::vector<unsigned char>& jpeg, sockpp:
 
         return;
     }
-
-    std::cerr << "done sending image" << std::endl;
 }
