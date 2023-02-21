@@ -26,6 +26,7 @@ void Ptask::run(Pdata* pdata, const Options* options)
 
 
 void Ptask::print_timings(Pdata *pdata, int64_t total_time) {
+    #if 0
     thread_local int i = 0;
 
     if (i++ % 10 != 0)
@@ -39,4 +40,5 @@ void Ptask::print_timings(Pdata *pdata, int64_t total_time) {
     }
 
     std::cerr << "Total: " << total_time << "ms\n";
+    #endif
 }

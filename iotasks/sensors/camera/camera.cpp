@@ -5,7 +5,7 @@
 #include <thread>
 
 Camera::Camera()
-	: camera(0)
+	: camera(2)
 {
 	//image = cv::imread("./test_image.jpg");
 

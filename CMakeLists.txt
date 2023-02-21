@@ -31,6 +31,8 @@ add_executable(
 		ptasks/pool.h
 		ptasks/lane_detection/lane_detection.cpp
 		ptasks/lane_detection/lane_detection.h
+		ptasks/analysis/analysis.cpp
+		ptasks/analysis/analysis.h
 
 		options/options_manager.cpp
 		options/options_manager.h

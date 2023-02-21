@@ -16,6 +16,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/snou/Bosch-Controller/iotasks/sinks/window_feed/window_feed.cpp" "CMakeFiles/controller.dir/iotasks/sinks/window_feed/window_feed.cpp.o" "gcc" "CMakeFiles/controller.dir/iotasks/sinks/window_feed/window_feed.cpp.o.d"
   "/home/snou/Bosch-Controller/main.cpp" "CMakeFiles/controller.dir/main.cpp.o" "gcc" "CMakeFiles/controller.dir/main.cpp.o.d"
   "/home/snou/Bosch-Controller/options/options_manager.cpp" "CMakeFiles/controller.dir/options/options_manager.cpp.o" "gcc" "CMakeFiles/controller.dir/options/options_manager.cpp.o.d"
+  "/home/snou/Bosch-Controller/ptasks/analysis/analysis.cpp" "CMakeFiles/controller.dir/ptasks/analysis/analysis.cpp.o" "gcc" "CMakeFiles/controller.dir/ptasks/analysis/analysis.cpp.o.d"
   "/home/snou/Bosch-Controller/ptasks/lane_detection/lane_detection.cpp" "CMakeFiles/controller.dir/ptasks/lane_detection/lane_detection.cpp.o" "gcc" "CMakeFiles/controller.dir/ptasks/lane_detection/lane_detection.cpp.o.d"
   "/home/snou/Bosch-Controller/ptasks/pool.cpp" "CMakeFiles/controller.dir/ptasks/pool.cpp.o" "gcc" "CMakeFiles/controller.dir/ptasks/pool.cpp.o.d"
   "/home/snou/Bosch-Controller/ptasks/ptask.cpp" "CMakeFiles/controller.dir/ptasks/ptask.cpp.o" "gcc" "CMakeFiles/controller.dir/ptasks/ptask.cpp.o.d"

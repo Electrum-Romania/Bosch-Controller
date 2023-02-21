@@ -15,6 +15,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/controller.dir/main.cpp.o.d"
   "CMakeFiles/controller.dir/options/options_manager.cpp.o"
   "CMakeFiles/controller.dir/options/options_manager.cpp.o.d"
+  "CMakeFiles/controller.dir/ptasks/analysis/analysis.cpp.o"
+  "CMakeFiles/controller.dir/ptasks/analysis/analysis.cpp.o.d"
   "CMakeFiles/controller.dir/ptasks/lane_detection/lane_detection.cpp.o"
   "CMakeFiles/controller.dir/ptasks/lane_detection/lane_detection.cpp.o.d"
   "CMakeFiles/controller.dir/ptasks/pool.cpp.o"

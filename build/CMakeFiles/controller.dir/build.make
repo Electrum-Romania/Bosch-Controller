@@ -195,10 +195,24 @@ CMakeFiles/controller.dir/ptasks/lane_detection/lane_detection.cpp.s: cmake_forc
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/controller.dir/ptasks/lane_detection/lane_detection.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/snou/Bosch-Controller/ptasks/lane_detection/lane_detection.cpp -o CMakeFiles/controller.dir/ptasks/lane_detection/lane_detection.cpp.s
 
+CMakeFiles/controller.dir/ptasks/analysis/analysis.cpp.o: CMakeFiles/controller.dir/flags.make
+CMakeFiles/controller.dir/ptasks/analysis/analysis.cpp.o: ../ptasks/analysis/analysis.cpp
+CMakeFiles/controller.dir/ptasks/analysis/analysis.cpp.o: CMakeFiles/controller.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/snou/Bosch-Controller/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/controller.dir/ptasks/analysis/analysis.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/controller.dir/ptasks/analysis/analysis.cpp.o -MF CMakeFiles/controller.dir/ptasks/analysis/analysis.cpp.o.d -o CMakeFiles/controller.dir/ptasks/analysis/analysis.cpp.o -c /home/snou/Bosch-Controller/ptasks/analysis/analysis.cpp
+
+CMakeFiles/controller.dir/ptasks/analysis/analysis.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/controller.dir/ptasks/analysis/analysis.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/snou/Bosch-Controller/ptasks/analysis/analysis.cpp > CMakeFiles/controller.dir/ptasks/analysis/analysis.cpp.i
+
+CMakeFiles/controller.dir/ptasks/analysis/analysis.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/controller.dir/ptasks/analysis/analysis.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/snou/Bosch-Controller/ptasks/analysis/analysis.cpp -o CMakeFiles/controller.dir/ptasks/analysis/analysis.cpp.s
+
 CMakeFiles/controller.dir/options/options_manager.cpp.o: CMakeFiles/controller.dir/flags.make
 CMakeFiles/controller.dir/options/options_manager.cpp.o: ../options/options_manager.cpp
 CMakeFiles/controller.dir/options/options_manager.cpp.o: CMakeFiles/controller.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/snou/Bosch-Controller/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/controller.dir/options/options_manager.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/snou/Bosch-Controller/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/controller.dir/options/options_manager.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/controller.dir/options/options_manager.cpp.o -MF CMakeFiles/controller.dir/options/options_manager.cpp.o.d -o CMakeFiles/controller.dir/options/options_manager.cpp.o -c /home/snou/Bosch-Controller/options/options_manager.cpp
 
 CMakeFiles/controller.dir/options/options_manager.cpp.i: cmake_force
@@ -212,7 +226,7 @@ CMakeFiles/controller.dir/options/options_manager.cpp.s: cmake_force
 CMakeFiles/controller.dir/utils/serial/serial.cpp.o: CMakeFiles/controller.dir/flags.make
 CMakeFiles/controller.dir/utils/serial/serial.cpp.o: ../utils/serial/serial.cpp
 CMakeFiles/controller.dir/utils/serial/serial.cpp.o: CMakeFiles/controller.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/snou/Bosch-Controller/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/controller.dir/utils/serial/serial.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/snou/Bosch-Controller/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/controller.dir/utils/serial/serial.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/controller.dir/utils/serial/serial.cpp.o -MF CMakeFiles/controller.dir/utils/serial/serial.cpp.o.d -o CMakeFiles/controller.dir/utils/serial/serial.cpp.o -c /home/snou/Bosch-Controller/utils/serial/serial.cpp
 
 CMakeFiles/controller.dir/utils/serial/serial.cpp.i: cmake_force
@@ -226,7 +240,7 @@ CMakeFiles/controller.dir/utils/serial/serial.cpp.s: cmake_force
 CMakeFiles/controller.dir/utils/command_socket/command_socket.cpp.o: CMakeFiles/controller.dir/flags.make
 CMakeFiles/controller.dir/utils/command_socket/command_socket.cpp.o: ../utils/command_socket/command_socket.cpp
 CMakeFiles/controller.dir/utils/command_socket/command_socket.cpp.o: CMakeFiles/controller.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/snou/Bosch-Controller/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/controller.dir/utils/command_socket/command_socket.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/snou/Bosch-Controller/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/controller.dir/utils/command_socket/command_socket.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/controller.dir/utils/command_socket/command_socket.cpp.o -MF CMakeFiles/controller.dir/utils/command_socket/command_socket.cpp.o.d -o CMakeFiles/controller.dir/utils/command_socket/command_socket.cpp.o -c /home/snou/Bosch-Controller/utils/command_socket/command_socket.cpp
 
 CMakeFiles/controller.dir/utils/command_socket/command_socket.cpp.i: cmake_force
@@ -240,7 +254,7 @@ CMakeFiles/controller.dir/utils/command_socket/command_socket.cpp.s: cmake_force
 CMakeFiles/controller.dir/utils/command_socket/line_reader.cpp.o: CMakeFiles/controller.dir/flags.make
 CMakeFiles/controller.dir/utils/command_socket/line_reader.cpp.o: ../utils/command_socket/line_reader.cpp
 CMakeFiles/controller.dir/utils/command_socket/line_reader.cpp.o: CMakeFiles/controller.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/snou/Bosch-Controller/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/controller.dir/utils/command_socket/line_reader.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/snou/Bosch-Controller/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/controller.dir/utils/command_socket/line_reader.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/controller.dir/utils/command_socket/line_reader.cpp.o -MF CMakeFiles/controller.dir/utils/command_socket/line_reader.cpp.o.d -o CMakeFiles/controller.dir/utils/command_socket/line_reader.cpp.o -c /home/snou/Bosch-Controller/utils/command_socket/line_reader.cpp
 
 CMakeFiles/controller.dir/utils/command_socket/line_reader.cpp.i: cmake_force
@@ -254,7 +268,7 @@ CMakeFiles/controller.dir/utils/command_socket/line_reader.cpp.s: cmake_force
 CMakeFiles/controller.dir/iotasks/sensors/keyboard/keyboard.cpp.o: CMakeFiles/controller.dir/flags.make
 CMakeFiles/controller.dir/iotasks/sensors/keyboard/keyboard.cpp.o: ../iotasks/sensors/keyboard/keyboard.cpp
 CMakeFiles/controller.dir/iotasks/sensors/keyboard/keyboard.cpp.o: CMakeFiles/controller.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/snou/Bosch-Controller/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/controller.dir/iotasks/sensors/keyboard/keyboard.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/snou/Bosch-Controller/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/controller.dir/iotasks/sensors/keyboard/keyboard.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/controller.dir/iotasks/sensors/keyboard/keyboard.cpp.o -MF CMakeFiles/controller.dir/iotasks/sensors/keyboard/keyboard.cpp.o.d -o CMakeFiles/controller.dir/iotasks/sensors/keyboard/keyboard.cpp.o -c /home/snou/Bosch-Controller/iotasks/sensors/keyboard/keyboard.cpp
 
 CMakeFiles/controller.dir/iotasks/sensors/keyboard/keyboard.cpp.i: cmake_force
@@ -268,7 +282,7 @@ CMakeFiles/controller.dir/iotasks/sensors/keyboard/keyboard.cpp.s: cmake_force
 CMakeFiles/controller.dir/iotasks/sinks/motors/motors.cpp.o: CMakeFiles/controller.dir/flags.make
 CMakeFiles/controller.dir/iotasks/sinks/motors/motors.cpp.o: ../iotasks/sinks/motors/motors.cpp
 CMakeFiles/controller.dir/iotasks/sinks/motors/motors.cpp.o: CMakeFiles/controller.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/snou/Bosch-Controller/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/controller.dir/iotasks/sinks/motors/motors.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/snou/Bosch-Controller/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object CMakeFiles/controller.dir/iotasks/sinks/motors/motors.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/controller.dir/iotasks/sinks/motors/motors.cpp.o -MF CMakeFiles/controller.dir/iotasks/sinks/motors/motors.cpp.o.d -o CMakeFiles/controller.dir/iotasks/sinks/motors/motors.cpp.o -c /home/snou/Bosch-Controller/iotasks/sinks/motors/motors.cpp
 
 CMakeFiles/controller.dir/iotasks/sinks/motors/motors.cpp.i: cmake_force
@@ -290,6 +304,7 @@ controller_OBJECTS = \
 "CMakeFiles/controller.dir/ptasks/ptask.cpp.o" \
 "CMakeFiles/controller.dir/ptasks/pool.cpp.o" \
 "CMakeFiles/controller.dir/ptasks/lane_detection/lane_detection.cpp.o" \
+"CMakeFiles/controller.dir/ptasks/analysis/analysis.cpp.o" \
 "CMakeFiles/controller.dir/options/options_manager.cpp.o" \
 "CMakeFiles/controller.dir/utils/serial/serial.cpp.o" \
 "CMakeFiles/controller.dir/utils/command_socket/command_socket.cpp.o" \
@@ -309,6 +324,7 @@ controller: CMakeFiles/controller.dir/iotasks/sinks/web_feed/web_feed.cpp.o
 controller: CMakeFiles/controller.dir/ptasks/ptask.cpp.o
 controller: CMakeFiles/controller.dir/ptasks/pool.cpp.o
 controller: CMakeFiles/controller.dir/ptasks/lane_detection/lane_detection.cpp.o
+controller: CMakeFiles/controller.dir/ptasks/analysis/analysis.cpp.o
 controller: CMakeFiles/controller.dir/options/options_manager.cpp.o
 controller: CMakeFiles/controller.dir/utils/serial/serial.cpp.o
 controller: CMakeFiles/controller.dir/utils/command_socket/command_socket.cpp.o
@@ -371,7 +387,7 @@ controller: /usr/lib/x86_64-linux-gnu/libopencv_photo.so.4.5.4d
 controller: /usr/lib/x86_64-linux-gnu/libopencv_imgproc.so.4.5.4d
 controller: /usr/lib/x86_64-linux-gnu/libopencv_core.so.4.5.4d
 controller: CMakeFiles/controller.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/snou/Bosch-Controller/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Linking CXX executable controller"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/snou/Bosch-Controller/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Linking CXX executable controller"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/controller.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

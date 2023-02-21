@@ -28,7 +28,9 @@ void command_socket::run()
         size_t delimiter_positon = line.find('=');
 
         std::string cname = line.substr(0, delimiter_positon);
-        std::string arg = line.substr(delimiter_positon + 1, line.length() - 2);
+        std::string arg = line.substr(delimiter_positon + 1, line.length() - 2 - delimiter_positon);
+
+        std::cout << "(" << cname << ")=(" << arg << ")" << std::endl;
 
         const command &c = commands.at(cname);
 

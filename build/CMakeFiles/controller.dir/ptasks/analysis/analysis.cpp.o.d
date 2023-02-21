@@ -1,6 +1,9 @@
-CMakeFiles/controller.dir/sched.cpp.o: \
- /home/snou/Bosch-Controller/sched.cpp /usr/include/stdc-predef.h \
- /home/snou/Bosch-Controller/controller.h \
+CMakeFiles/controller.dir/ptasks/analysis/analysis.cpp.o: \
+ /home/snou/Bosch-Controller/ptasks/analysis/analysis.cpp \
+ /usr/include/stdc-predef.h \
+ /home/snou/Bosch-Controller/ptasks/analysis/./analysis.h \
+ /home/snou/Bosch-Controller/ptasks/analysis/./../ptask.h \
+ /home/snou/Bosch-Controller/ptasks/analysis/./../../controller.h \
  /usr/include/c++/11/unordered_map /usr/include/c++/11/type_traits \
  /usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/os_defines.h \
@@ -370,105 +373,5 @@ CMakeFiles/controller.dir/sched.cpp.o: \
  /usr/include/opencv4/opencv2/video.hpp \
  /usr/include/opencv4/opencv2/video/tracking.hpp \
  /usr/include/opencv4/opencv2/video/background_segm.hpp \
- /home/snou/Bosch-Controller/options/pdata.gen.inc \
- /home/snou/Bosch-Controller/options/options.gen.inc \
- /home/snou/Bosch-Controller/iotasks/iotask.h \
- /home/snou/Bosch-Controller/iotasks/../controller.h \
- /usr/include/c++/11/atomic /usr/include/c++/11/latch \
- /usr/include/c++/11/semaphore /usr/include/c++/11/bits/semaphore_base.h \
- /usr/include/c++/11/bits/atomic_timed_wait.h \
- /usr/include/c++/11/bits/this_thread_sleep.h \
- /usr/include/x86_64-linux-gnu/sys/time.h /usr/include/semaphore.h \
- /usr/include/x86_64-linux-gnu/bits/semaphore.h \
- /home/snou/Bosch-Controller/iotasks/sensors/camera/camera.h \
- /home/snou/Bosch-Controller/iotasks/sensors/camera/../../iotask.h \
- /home/snou/Bosch-Controller/iotasks/sinks/window_feed/window_feed.h \
- /home/snou/Bosch-Controller/iotasks/sinks/window_feed/../../iotask.h \
- /home/snou/Bosch-Controller/iotasks/sinks/web_feed/web_feed.h \
- /home/snou/Bosch-Controller/iotasks/sinks/web_feed/../../iotask.h \
- /usr/local/include/sockpp/tcp_connector.h \
- /usr/local/include/sockpp/connector.h \
- /usr/local/include/sockpp/stream_socket.h \
- /usr/local/include/sockpp/socket.h \
- /usr/local/include/sockpp/sock_address.h \
- /usr/local/include/sockpp/platform.h \
- /usr/include/x86_64-linux-gnu/sys/socket.h \
- /usr/include/x86_64-linux-gnu/bits/types/struct_iovec.h \
- /usr/include/x86_64-linux-gnu/bits/socket.h \
- /usr/include/x86_64-linux-gnu/bits/socket_type.h \
- /usr/include/x86_64-linux-gnu/bits/sockaddr.h \
- /usr/include/x86_64-linux-gnu/asm/socket.h \
- /usr/include/asm-generic/socket.h /usr/include/linux/posix_types.h \
- /usr/include/linux/stddef.h \
- /usr/include/x86_64-linux-gnu/asm/posix_types.h \
- /usr/include/x86_64-linux-gnu/asm/posix_types_64.h \
- /usr/include/asm-generic/posix_types.h \
- /usr/include/x86_64-linux-gnu/asm/bitsperlong.h \
- /usr/include/asm-generic/bitsperlong.h \
- /usr/include/x86_64-linux-gnu/asm/sockios.h \
- /usr/include/asm-generic/sockios.h \
- /usr/include/x86_64-linux-gnu/bits/types/struct_osockaddr.h \
- /usr/include/x86_64-linux-gnu/sys/uio.h \
- /usr/include/x86_64-linux-gnu/bits/uio-ext.h /usr/include/arpa/inet.h \
- /usr/include/netinet/in.h /usr/include/x86_64-linux-gnu/bits/in.h \
- /usr/include/netdb.h /usr/include/rpc/netdb.h \
- /usr/include/x86_64-linux-gnu/bits/types/sigevent_t.h \
- /usr/include/x86_64-linux-gnu/bits/types/__sigval_t.h \
- /usr/include/x86_64-linux-gnu/bits/netdb.h /usr/include/signal.h \
- /usr/include/x86_64-linux-gnu/bits/signum-generic.h \
- /usr/include/x86_64-linux-gnu/bits/signum-arch.h \
- /usr/include/x86_64-linux-gnu/bits/types/sig_atomic_t.h \
- /usr/include/x86_64-linux-gnu/bits/types/siginfo_t.h \
- /usr/include/x86_64-linux-gnu/bits/siginfo-arch.h \
- /usr/include/x86_64-linux-gnu/bits/siginfo-consts.h \
- /usr/include/x86_64-linux-gnu/bits/siginfo-consts-arch.h \
- /usr/include/x86_64-linux-gnu/bits/types/sigval_t.h \
- /usr/include/x86_64-linux-gnu/bits/sigevent-consts.h \
- /usr/include/x86_64-linux-gnu/bits/sigaction.h \
- /usr/include/x86_64-linux-gnu/bits/sigcontext.h \
- /usr/include/x86_64-linux-gnu/bits/types/stack_t.h \
- /usr/include/x86_64-linux-gnu/sys/ucontext.h \
- /usr/include/x86_64-linux-gnu/bits/sigstack.h \
- /usr/include/x86_64-linux-gnu/bits/sigstksz.h \
- /usr/include/x86_64-linux-gnu/bits/ss_flags.h \
- /usr/include/x86_64-linux-gnu/bits/types/struct_sigstack.h \
- /usr/include/x86_64-linux-gnu/bits/sigthread.h \
- /usr/include/x86_64-linux-gnu/bits/signal_ext.h \
- /usr/local/include/sockpp/result.h \
- /usr/local/include/sockpp/tcp_socket.h \
- /usr/local/include/sockpp/inet_address.h \
- /home/snou/Bosch-Controller/ptasks/ptask.h \
- /home/snou/Bosch-Controller/ptasks/../controller.h \
- /home/snou/Bosch-Controller/ptasks/pool.h \
- /home/snou/Bosch-Controller/ptasks/ptask.h \
- /usr/include/c++/11/condition_variable /usr/include/c++/11/stop_token \
- /usr/include/c++/11/bits/std_thread.h /usr/include/c++/11/thread \
- /home/snou/Bosch-Controller/ptasks/lane_detection/lane_detection.h \
- /home/snou/Bosch-Controller/ptasks/lane_detection/../ptask.h \
- /home/snou/Bosch-Controller/ptasks/analysis/analysis.h \
- /home/snou/Bosch-Controller/ptasks/analysis/../ptask.h \
- /home/snou/Bosch-Controller/options/options_manager.h \
- /usr/include/c++/11/shared_mutex \
- /home/snou/Bosch-Controller/options/../controller.h \
- /home/snou/Bosch-Controller/options/../utils/command_socket/command_socket.h \
- /home/snou/Bosch-Controller/options/../utils/command_socket/line_reader.h \
- /home/snou/Bosch-Controller/iotasks/sensors/keyboard/keyboard.h \
- /home/snou/Bosch-Controller/iotasks/sensors/keyboard/../../../controller.h \
- /home/snou/Bosch-Controller/iotasks/sensors/keyboard/../../iotask.h \
- /home/snou/Bosch-Controller/iotasks/sensors/keyboard/../../../utils/command_socket/command_socket.h \
- /home/snou/Bosch-Controller/utils/serial/serial.h /usr/include/termios.h \
- /usr/include/x86_64-linux-gnu/bits/termios.h \
- /usr/include/x86_64-linux-gnu/bits/termios-struct.h \
- /usr/include/x86_64-linux-gnu/bits/termios-c_cc.h \
- /usr/include/x86_64-linux-gnu/bits/termios-c_iflag.h \
- /usr/include/x86_64-linux-gnu/bits/termios-c_oflag.h \
- /usr/include/x86_64-linux-gnu/bits/termios-baud.h \
- /usr/include/x86_64-linux-gnu/bits/termios-c_cflag.h \
- /usr/include/x86_64-linux-gnu/bits/termios-c_lflag.h \
- /usr/include/x86_64-linux-gnu/bits/termios-tcflow.h \
- /usr/include/x86_64-linux-gnu/bits/termios-misc.h \
- /usr/include/x86_64-linux-gnu/sys/ttydefaults.h \
- /home/snou/Bosch-Controller/iotasks/sinks/motors/motors.h \
- /home/snou/Bosch-Controller/iotasks/sinks/motors/../../iotask.h \
- /home/snou/Bosch-Controller/iotasks/sinks/motors/../../../utils/serial/serial.h \
- /usr/include/c++/11/cassert
+ /home/snou/Bosch-Controller/ptasks/analysis/./../../options/pdata.gen.inc \
+ /home/snou/Bosch-Controller/ptasks/analysis/./../../options/options.gen.inc

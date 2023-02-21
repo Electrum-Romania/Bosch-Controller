@@ -321,6 +321,30 @@ options/options_manager.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/controller.dir/build.make CMakeFiles/controller.dir/options/options_manager.cpp.s
 .PHONY : options/options_manager.cpp.s
 
+ptasks/analysis/analysis.o: ptasks/analysis/analysis.cpp.o
+.PHONY : ptasks/analysis/analysis.o
+
+# target to build an object file
+ptasks/analysis/analysis.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/controller.dir/build.make CMakeFiles/controller.dir/ptasks/analysis/analysis.cpp.o
+.PHONY : ptasks/analysis/analysis.cpp.o
+
+ptasks/analysis/analysis.i: ptasks/analysis/analysis.cpp.i
+.PHONY : ptasks/analysis/analysis.i
+
+# target to preprocess a source file
+ptasks/analysis/analysis.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/controller.dir/build.make CMakeFiles/controller.dir/ptasks/analysis/analysis.cpp.i
+.PHONY : ptasks/analysis/analysis.cpp.i
+
+ptasks/analysis/analysis.s: ptasks/analysis/analysis.cpp.s
+.PHONY : ptasks/analysis/analysis.s
+
+# target to generate assembly for a file
+ptasks/analysis/analysis.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/controller.dir/build.make CMakeFiles/controller.dir/ptasks/analysis/analysis.cpp.s
+.PHONY : ptasks/analysis/analysis.cpp.s
+
 ptasks/lane_detection/lane_detection.o: ptasks/lane_detection/lane_detection.cpp.o
 .PHONY : ptasks/lane_detection/lane_detection.o
 
@@ -522,6 +546,9 @@ help:
 	@echo "... options/options_manager.o"
 	@echo "... options/options_manager.i"
 	@echo "... options/options_manager.s"
+	@echo "... ptasks/analysis/analysis.o"
+	@echo "... ptasks/analysis/analysis.i"
+	@echo "... ptasks/analysis/analysis.s"
 	@echo "... ptasks/lane_detection/lane_detection.o"
 	@echo "... ptasks/lane_detection/lane_detection.i"
 	@echo "... ptasks/lane_detection/lane_detection.s"

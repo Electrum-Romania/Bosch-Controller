@@ -8,6 +8,7 @@
 #include "ptasks/ptask.h"
 #include "ptasks/pool.h"
 #include "ptasks/lane_detection/lane_detection.h"
+#include "ptasks/analysis/analysis.h"
 
 #include "options/options_manager.h"
 #include "iotasks/sensors/keyboard/keyboard.h"
@@ -68,12 +69,15 @@ void sched()
 
 	std::vector<IOtask*> sensors;
 	std::vector<Ptask*> ptasks_L1;
+	std::vector<Ptask*> ptasks_L2;
 	std::vector<IOtask*> sinks;
 
 	sensors.push_back(new Camera());
     sensors.push_back(new Keyboard(cs));
 
 	ptasks_L1.push_back(new LaneDetection());
+
+	ptasks_L2.push_back(new Analysis());
 
 	//sinks.push_back(new WindowFeed("Feed"));
 	sinks.push_back(new WebFeed("127.0.0.1", 2244, 2255));
@@ -104,7 +108,7 @@ void sched()
 		sensor_latch = call_io(sensors, next_pdata, next_opt);
 
 		ptask_pool.run_tasks_wait(ptasks_L1, pdata, opt);
-//		ptask_pool.run_tasks_wait(ptasks_L2, pdata, opt);
+		ptask_pool.run_tasks_wait(ptasks_L2, pdata, opt);
 //		ptask_pool.run_tasks_wait(ptasks_L3, pdata, opt);
 
 		if (!first_frame) {
