@@ -30,16 +30,16 @@ void WebFeed::compute_frame()
 
     write_image_to_connection(pdata->camera_image, camera_conn);
 
-    cv::Mat analysis_frame = pdata->camera_image.clone();
+    // cv::Mat analysis_frame = pdata->camera_image.clone();
 
     // Lanes
-    for (size_t i = 0; i < pdata->lanes.size(); i++)
-    {
-        cv::line( analysis_frame, cv::Point(pdata->lanes[i][0], pdata->lanes[i][1]),
-                  cv::Point( pdata->lanes[i][2], pdata->lanes[i][3]), cv::Scalar(0,0,255), 3, 8 );
-    }
+    // for (size_t i = 0; i < pdata->lanes.size(); i++)
+    // {
+    //     cv::line( analysis_frame, cv::Point(pdata->lanes[i][0], pdata->lanes[i][1]),
+    //               cv::Point( pdata->lanes[i][2], pdata->lanes[i][3]), cv::Scalar(0,0,255), 3, 8 );
+    // }
 
-    write_image_to_connection(analysis_frame, analysis_conn);
+    write_image_to_connection(pdata->analysis, analysis_conn);
 }
 
 void WebFeed::write_image_to_connection(cv::Mat& image, sockpp::tcp_connector &conn)

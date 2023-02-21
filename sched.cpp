@@ -61,7 +61,7 @@ void await_io(std::latch* l)
 [[noreturn]]
 void sched()
 {
-    command_socket cs("127.0.0.1", 2002);
+    command_socket cs("127.0.0.1", 2266);
 	OptionsManager opt_manager(cs);
 
 	PtaskPool ptask_pool;

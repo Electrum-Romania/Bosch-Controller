@@ -1,0 +1,16 @@
+def->lane_detection_crop_floor = 0;
+def->lane_detection_crop_roof = 250;
+def->lane_detection_crop_x_start = 200;
+def->lane_detection_crop_x_stop = 1100;
+def->lane_detection_crop_x_horizon = 550;
+def->lane_detection_blur_level = 3;
+def->lane_detection_canny_thresh_low = 50;
+def->lane_detection_canny_thresh_high = 150;
+def->lane_perspective_floor = 250;
+def->lane_perspective_roof = 750;
+def->lane_perspective_startfloor = 250;
+def->lane_perspective_stopfloor = 750;
+def->lane_perspective_startroof = 250;
+def->lane_perspective_stoproof = 750;
+def->web_feed_post_server = "192.168.59.35:8000";
+def->web_feed_post_raw_image_path = "/updateImage/";

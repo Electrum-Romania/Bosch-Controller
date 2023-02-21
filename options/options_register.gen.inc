@@ -1,0 +1,16 @@
+cs.register_command("lane_detection_crop_floor", this, parse_new_option_wrapper);
+cs.register_command("lane_detection_crop_roof", this, parse_new_option_wrapper);
+cs.register_command("lane_detection_crop_x_start", this, parse_new_option_wrapper);
+cs.register_command("lane_detection_crop_x_stop", this, parse_new_option_wrapper);
+cs.register_command("lane_detection_crop_x_horizon", this, parse_new_option_wrapper);
+cs.register_command("lane_detection_blur_level", this, parse_new_option_wrapper);
+cs.register_command("lane_detection_canny_thresh_low", this, parse_new_option_wrapper);
+cs.register_command("lane_detection_canny_thresh_high", this, parse_new_option_wrapper);
+cs.register_command("lane_perspective_floor", this, parse_new_option_wrapper);
+cs.register_command("lane_perspective_roof", this, parse_new_option_wrapper);
+cs.register_command("lane_perspective_startfloor", this, parse_new_option_wrapper);
+cs.register_command("lane_perspective_stopfloor", this, parse_new_option_wrapper);
+cs.register_command("lane_perspective_startroof", this, parse_new_option_wrapper);
+cs.register_command("lane_perspective_stoproof", this, parse_new_option_wrapper);
+cs.register_command("web_feed_post_server", this, parse_new_option_wrapper);
+cs.register_command("web_feed_post_raw_image_path", this, parse_new_option_wrapper);

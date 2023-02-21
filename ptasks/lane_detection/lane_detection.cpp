@@ -3,6 +3,11 @@
 #include <chrono>
 #include <opencv2/opencv.hpp>
 
+// OBS input:  x: 1920
+//		   y: 1080
+// web output: x: 300
+//		   y: 366
+
 
 LaneDetection::LaneDetection() : Ptask("LaneDetection") {
 
@@ -28,41 +33,32 @@ cv::Mat triangle_mask(cv::Size size, int p1_x, int p1_y, int p2_x, int p2_y, int
 	return mat;
 }
 
+cv::Mat warp_lane(cv::Mat src, Pdata* pdata, const Options* options) {
+	cv::Point2f srcPoints[] = {
+		cv::Point(options->lane_perspective_startroof, src.size().height - options->lane_perspective_roof),
+		cv::Point(options-> lane_perspective_stoproof, src.size().height - options->lane_perspective_roof),
+		cv::Point(options->lane_perspective_startfloor, src.size().height - options->lane_perspective_floor),
+		cv::Point(options-> lane_perspective_stopfloor, src.size().height - options->lane_perspective_floor)
+	};
+
+	cv::Point2f dstPoints[] = {
+		cv::Point(0, 0),
+		cv::Point(300, 0),
+		cv::Point(0, 366),
+		cv::Point(300, 366)
+	};
+
+	cv::Mat mat = cv::getPerspectiveTransform(srcPoints, dstPoints);
+
+	cv::Mat dst;
+	cv::warpPerspective(src, dst, mat, cv::Size(300, 366));
+
+	return dst;
+
+}
+
 void LaneDetection::compute(Pdata* pdata, const Options* options)
 {
-	cv::Mat grayscale_image;
-	cv::cvtColor(pdata->camera_image, grayscale_image, cv::COLOR_BGR2GRAY);
-
-	cv::Mat blur_image;
-	cv::GaussianBlur(
-		grayscale_image,
-		blur_image,
-		cv::Size(options->lane_detection_blur_level, options->lane_detection_blur_level),
-		0
-	);
-
-	cv::Mat canny_image;
-	cv::Canny(
-		blur_image,
-		canny_image,
-		options->lane_detection_canny_thresh_low,
-		options->lane_detection_canny_thresh_high
-	);
-
-	cv::Mat mask =
-		triangle_mask(
-			pdata->camera_image.size(),
-			options->lane_detection_crop_x_start,
-			pdata->camera_image.size().height - options->lane_detection_crop_floor,
-			options->lane_detection_crop_x_stop,
-			pdata->camera_image.size().height - options->lane_detection_crop_floor,
-			options->lane_detection_crop_x_horizon,
-			options->lane_detection_crop_roof
-		);
-
-	cv::Mat masked_image;
-	cv::bitwise_and(canny_image, mask, masked_image);
-
-	cv::HoughLinesP(masked_image, pdata->lanes, 1, CV_PI/180, 100, 50, 10);
+	pdata->analysis = warp_lane(pdata->camera_image, pdata, options);
 }
 
