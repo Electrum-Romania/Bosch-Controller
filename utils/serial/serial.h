@@ -15,6 +15,8 @@ private:
 
     ssize_t raw_write(const void *data, size_t size);
 
+    int screen_index;
+
 public:
     enum class Command {
         SPED = 1,

@@ -1,5 +1,7 @@
 #include "serial.h"
 
+#include "../../controller.h"
+
 #include <cerrno>
 #include <cstdarg>
 #include <cstring>
@@ -9,11 +11,14 @@
 
 #include <fcntl.h>
 
-Serial::Serial(const char *file, speed_t baud_rate) {
+Serial::Serial(const char *file, speed_t baud_rate)
+{
     fd = open(file, O_RDWR | O_NOCTTY);
 
+    screen_index = logger.request_screen('n', "Serial");
+
     if (fd < 0) {
-        std::cerr << "Could not open tty \"" << file << "\": " << std::strerror(errno) << std::endl;
+       logger.log(screen_index, LogLevel::ERROR, nclogger::to_string("Could not open tty \"") + file + "\": " + std::strerror(errno));
         return;
     }
 
@@ -21,7 +26,7 @@ Serial::Serial(const char *file, speed_t baud_rate) {
 
     if(tcgetattr(fd, &tty) != 0)
     {
-        std::cerr << "Could not read tty attributes: " << std::strerror(errno) << std::endl;
+        logger.log(screen_index, LogLevel::ERROR, nclogger::to_string("Could not read tty attributes: ") + std::strerror(errno));
         return;
     }
 
@@ -47,7 +52,7 @@ Serial::Serial(const char *file, speed_t baud_rate) {
 
     if (tcsetattr(fd, TCSANOW, &tty) != 0)
     {
-        std::cerr << "Could not raw_write tty attributes: " << std::strerror(errno) << std::endl;
+        logger.log(screen_index, LogLevel::ERROR, nclogger::to_string("Could not raw_write tty attributes: ") + std::strerror(errno));
         return;
     }
 }
@@ -135,14 +140,12 @@ int Serial::read_char() const
     ret = read(fd, &b, 1);
 
     if (ret < 0) {
-        std::cerr << "Serial read error: " << std::strerror(errno) << std::endl;
+        logger.log(screen_index, LogLevel::ERROR, nclogger::to_string("Serial read error: ") + std::strerror(errno));
         return -1;
     }
 
     if (ret == 0)
         return -1;
-
-    //std::cout << "read " << b << " (" << (int) (std::uint8_t) b << ")" << std::endl;
 
     return b;
 }
@@ -152,10 +155,11 @@ void Serial::consume_char(char expected) {
 
     if ((c = read_char()) != expected) {
         if (c == -1) {
-            std::cerr << "Serial closed unexpectedly" << std::endl;
+
+            logger.log(screen_index, LogLevel::ERROR, nclogger::to_string("Serial closed unexpectedly: ") + std::strerror(errno));
         } else {
             if (expected != '\0')
-                std::cerr << "Unexpected '" << (char) c << "' in serial stream (expected '" << expected << "')" << std::endl;
+                logger.log(screen_index, LogLevel::ERROR, nclogger::to_string("Unexpected '") + (char) c + "' in serial stream (expected '" + expected + "')");
         }
     }
 }
