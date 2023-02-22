@@ -1,7 +1,3 @@
-//
-// Created by grffn on 2/15/23.
-//
-
 #include "motors.h"
 
 Motors::Motors(Serial &serial)
@@ -31,7 +27,7 @@ void Motors::compute_frame() {
         nucleo.write_command(Serial::Command::SPED, current_motor_speed);
         std::string response = nucleo.read_response();
 
-        if (response != "ack")
+        if (response != "1:ack;;")
             logger.log(screen_index, LogLevel::WARN, "Nucleo error: " + response);
     }
 }
