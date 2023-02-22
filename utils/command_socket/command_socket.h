@@ -23,6 +23,8 @@ private:
 
     std::unordered_map<std::string, command> commands;
 
+    int screen_index;
+
 public:
     command_socket(const std::string& host, uint16_t port);
 

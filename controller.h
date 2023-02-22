@@ -3,6 +3,11 @@
 
 #include <unordered_map>
 #include <opencv2/opencv.hpp>
+#include <nclogger/logger.hpp>
+#include <nclogger/to_string.hpp>
+
+extern nclogger::Logger logger;
+using nclogger::LogLevel;
 
 struct PressedKeys {
     int w;

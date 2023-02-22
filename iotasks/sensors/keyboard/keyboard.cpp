@@ -5,7 +5,7 @@
 #include "keyboard.h"
 
 Keyboard::Keyboard(command_socket &cs)
-    : pressed_keys({0, 0, 0, 0})
+    : IOtask("Keyboard", 'k'), pressed_keys({0, 0, 0, 0})
 {
     cs.register_command("pressed_key", this, key_pressed_callback_wrapper);
 }
@@ -13,6 +13,8 @@ Keyboard::Keyboard(command_socket &cs)
 void Keyboard::key_pressed_callback(const std::string &, const std::string &key)
 {
     std::lock_guard l(mux);
+
+    logger.log(screen_index, LogLevel::INFO, "pressed key " + nclogger::to_string(key.at(0)));
 
     switch (key.at(0)) {
         case 'w': pressed_keys.w++; break;

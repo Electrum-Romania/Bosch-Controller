@@ -5,7 +5,7 @@
 #include <thread>
 
 Camera::Camera()
-	: camera(0)
+	: IOtask("Camera", 'c'), camera(0)
 {
 	//image = cv::imread("./test_image.jpg");
 
@@ -16,12 +16,12 @@ Camera::Camera()
     //    }
 
 	if (!camera.isOpened()) {
-		std::cerr << "Could not open video feed" << std::endl;
+		logger.log(screen_index, LogLevel::FATAL, "Could not open camera feed!");
 		std::exit(1);
 	}
 }
 
-Camera::~Camera() {}
+Camera::~Camera() = default;
 
 void Camera::compute_frame()
 {
@@ -30,7 +30,7 @@ void Camera::compute_frame()
 	camera.read(image);
 
 	if (image.empty()) {
-		std::cerr << "ERROR! blank frame grabbed" << std::endl;
+        logger.log(screen_index, LogLevel::ERROR, "ERROR! blank frame grabbed");
 		return;
 	}
 

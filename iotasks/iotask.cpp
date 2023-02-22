@@ -4,9 +4,12 @@
 
 // using std::assert;
 
-IOtask::IOtask()
+IOtask::IOtask(std::string name, int key)
 	: busy(false), give_frame(0), done_frame(nullptr), pdata(nullptr), options(nullptr)
-{}
+{
+    screen_index = logger.request_screen(key, name);
+    watch_index = logger.request_watch(key, std::move(name));
+}
 
 IOtask::~IOtask() = default;
 

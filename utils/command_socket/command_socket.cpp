@@ -1,14 +1,17 @@
 #include "command_socket.h"
+#include "../../controller.h"
 
 command_socket::command_socket(const std::string& host, uint16_t port)
     : conn({host, port}), dead(false), thread([this] () {
         run();
     })
-{}
+{
+    screen_index = logger.request_screen('c', "CS");
+}
 
 void command_socket::register_command(const std::string& cname, void *object, command_callback f)
 {
-    std::cout << "registering command " << cname << std::endl;
+    logger.log(screen_index, LogLevel::INFO, "registering command " + cname);
     commands.insert({cname, {object, f}});
 }
 
@@ -16,8 +19,7 @@ void command_socket::run()
 {
     // check connection initialization
     if (!conn) {
-        std::cerr << "Error connecting to server: "
-                  << conn.last_error_str() << std::endl;
+        logger.log(screen_index, LogLevel::ERROR, "Error connecting to server: " + conn.last_error_str());
 
         dead = true;
     }
@@ -35,4 +37,3 @@ void command_socket::run()
         c.callback(c.object, cname, arg);
     }
 }
-

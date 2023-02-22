@@ -9,7 +9,7 @@
 //		   y: 366
 
 
-LaneDetection::LaneDetection() : Ptask("LaneDetection") {
+LaneDetection::LaneDetection() : Ptask("LaneDetection", 'l') {
 
 }
 

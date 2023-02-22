@@ -5,9 +5,15 @@
 
 namespace chrono = std::chrono;
 
-Ptask::Ptask(std::string name)
-    : name(std::move(name))
-{}
+int Ptask::timings_screen = -1;
+std::unordered_map<std::string, int> Ptask::title_to_watch_value;
+
+Ptask::Ptask(std::string name, int key)
+    : name(name)
+{
+    screen_index = logger.request_screen(key, name);
+    watch_index = logger.request_watch(key, std::move(name));
+}
 
 Ptask::~Ptask() = default;
 
@@ -31,12 +37,22 @@ void Ptask::print_timings(Pdata *pdata, int64_t total_time) {
     if (i++ % 10 != 0)
         return;
 
-    std::cerr << "\033[2J\033[J";
-    std::cerr << "Timings\n";
+    if (timings_screen == -1) {
+        timings_screen = logger.request_watch('t', "Ptask Timings");
 
-    for (auto const& [task, time]: pdata->timings) {
-        std::cerr << task << ":" << std::setw(3) << time << "ms\n";
+        for (auto const& [task_title, time]: pdata->timings) {
+            title_to_watch_value[task_title] = logger.register_watch_value(timings_screen, task_title, 5);
+        }
+
+        title_to_watch_value["total"] = logger.register_watch_value(timings_screen, "Total", 5);
     }
 
-    std::cerr << "Total: " << total_time << "ms\n";
+    long total = 0;
+
+    for (auto const& [task_title, time]: pdata->timings) {
+        total += time;
+        logger.set_watch_value(timings_screen, title_to_watch_value[task_title], nclogger::to_string(time, 5));
+    }
+
+    logger.set_watch_value(timings_screen, title_to_watch_value["total"], nclogger::to_string(total, 5));
 }

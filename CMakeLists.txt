@@ -7,6 +7,8 @@ project(
 )
 
 find_package(OpenCV REQUIRED)
+find_package(nclogger REQUIRED)
+find_package(Curses REQUIRED)
 
 add_executable(
 		controller
@@ -43,7 +45,8 @@ add_executable(
 		utils/command_socket/line_reader.h
 		iotasks/sensors/keyboard/keyboard.cpp iotasks/sensors/keyboard/keyboard.h iotasks/sinks/motors/motors.cpp iotasks/sinks/motors/motors.h)
 
-target_link_libraries(controller ${OpenCV_LIBS} sockpp)
+target_link_libraries(controller ${OpenCV_LIBS} sockpp nclogger::nclogger ${CURSES_LIBRARIES})
+target_include_directories(controller PRIVATE ${CURSES_INCLUDE_DIR})
 
 target_compile_features(controller PRIVATE cxx_std_20)
 

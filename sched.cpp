@@ -61,6 +61,10 @@ void await_io(std::latch* l)
 [[noreturn]]
 void sched()
 {
+    int sched_screen_id = logger.request_screen('s', "Sched");
+
+    logger.log(sched_screen_id, LogLevel::INFO, "Begining initialization");
+
     command_socket cs("127.0.0.1", 2266);
 	OptionsManager opt_manager(cs);
 
@@ -77,8 +81,8 @@ void sched()
 
 	//sinks.push_back(new WindowFeed("Feed"));
 	sinks.push_back(new WebFeed("127.0.0.1", 2244, 2255));
-    Serial nucleo("/dev/pts/4", B38400);
-    sinks.push_back(new Motors(nucleo));
+    //Serial nucleo("/dev/pts/4", B38400);
+    //sinks.push_back(new Motors(nucleo));
 
 	std::vector<std::thread> sensor_threads = launch_io(sensors);
 	std::vector<std::thread> sink_threads = launch_io(sinks);
@@ -92,6 +96,8 @@ void sched()
 	Pdata   *old_pdata;
 	Options *old_opt;
 	bool first_frame = true;
+
+    logger.log(sched_screen_id, LogLevel::INFO, "Finished initialization, starting main loop");
 
 	for (;;) {
 		auto start = chrono::high_resolution_clock::now();

@@ -1,21 +1,22 @@
 #include "web_feed.h"
 
-WebFeed::WebFeed(std::string host, uint16_t camera_port, uint16_t analysis_port)
-	: camera_conn({host, camera_port}),
+WebFeed::WebFeed(const std::string& host, uint16_t camera_port, uint16_t analysis_port)
+	: IOtask("WebFeed", 'p'),
+    camera_conn({host, camera_port}),
     analysis_conn({host, analysis_port}),
     dead(false)
 {
 	if (!camera_conn) {
-		std::cerr << "Error connecting to server: "
-			<< camera_conn.last_error_str() << std::endl;
+		logger.log(screen_index, LogLevel::ERROR, "Error connecting to server: "
+                + analysis_conn.last_error_str());
 
 		dead = true;
 
 		return;
 	}
     if (!analysis_conn) {
-        std::cerr << "Error connecting to server: "
-                  << analysis_conn.last_error_str() << std::endl;
+        logger.log(screen_index, LogLevel::ERROR, "Error connecting to server: "
+                                                  + analysis_conn.last_error_str());
 
         dead = true;
 
@@ -29,15 +30,6 @@ void WebFeed::compute_frame()
 		return;
 
     write_image_to_connection(pdata->camera_image, camera_conn);
-
-    // cv::Mat analysis_frame = pdata->camera_image.clone();
-
-    // Lanes
-    // for (size_t i = 0; i < pdata->lanes.size(); i++)
-    // {
-    //     cv::line( analysis_frame, cv::Point(pdata->lanes[i][0], pdata->lanes[i][1]),
-    //               cv::Point( pdata->lanes[i][2], pdata->lanes[i][3]), cv::Scalar(0,0,255), 3, 8 );
-    // }
 
     write_image_to_connection(pdata->analysis, analysis_conn);
 }
@@ -66,8 +58,8 @@ void WebFeed::write_jpeg_to_connection(std::vector<unsigned char>& jpeg, sockpp:
 
     if (conn.write_n(raw_image_len_encoded, 4) == -1
         || conn.write_n(jpeg.data(), jpeg.size()) == -1) {
-        std::cerr << "Error writing data: "
-                  << conn.last_error_str() << std::endl;
+
+        logger.log(screen_index, LogLevel::ERROR, "Error writing data" + conn.last_error_str());
 
         dead = true;
 

@@ -1,7 +1,8 @@
 #include "window_feed.h"
 
 WindowFeed::WindowFeed(const char *window_name)
-	: window_name(window_name)
+	: IOtask("WindowFeed", 'P'),
+    window_name(window_name)
 {}
 
 void WindowFeed::compute_frame()

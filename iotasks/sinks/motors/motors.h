@@ -13,6 +13,8 @@ private:
     double current_motor_speed{};
     Serial &nucleo;
 
+    int current_motor_speed_watch_value_index;
+
 public:
     explicit Motors(Serial&);
 

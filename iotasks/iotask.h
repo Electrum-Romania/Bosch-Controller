@@ -13,12 +13,17 @@ private:
 	std::latch*           done_frame;
 	std::atomic_bool      busy;
 
+
+
 protected:
 	Pdata*         pdata;
 	const Options* options;
 
+    int watch_index;
+    int screen_index;
+
 public:
-	IOtask();
+	IOtask(std::string name, int key);
 	virtual ~IOtask();
 
 	virtual void compute_frame() = 0;

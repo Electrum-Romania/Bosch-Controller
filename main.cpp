@@ -6,6 +6,7 @@
 #include <cmath>
 
 #include <iostream>
+#include <nclogger/logger.hpp>
 
 [[noreturn]] void sched();
 
@@ -25,20 +26,12 @@ void cb(void *, const std::string&, const std::string& arg)
     std::cout << "(" << arg << ")" << std::endl;
 }
 
-//command_socket cs("127.0.0.1", 2002);
-
-/*void test_command_socket()
-{
-    cs.register_command("PRINT", nullptr, cb);
-}*/
+nclogger::Logger logger;
 
 int main()
 {
     sockpp::initialize();
 
-    //test_serial();
-
-    //test_command_socket();
 
 	sched();
 }

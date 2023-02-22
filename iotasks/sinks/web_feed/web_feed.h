@@ -17,7 +17,7 @@ private:
     void write_image_to_connection(cv::Mat& image, sockpp::tcp_connector& conn);
 	
 public:
-	WebFeed(std::string host, uint16_t camera_port, uint16_t analysis_port);
+	WebFeed(const std::string& host, uint16_t camera_port, uint16_t analysis_port);
 
 	void compute_frame() override;
 };
