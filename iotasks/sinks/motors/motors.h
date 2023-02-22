@@ -11,9 +11,11 @@
 class Motors : public IOtask {
 private:
     double current_motor_speed{};
+    double current_ster{};
     Serial &nucleo;
 
     int current_motor_speed_watch_value_index;
+    int current_steer_watch_value_index;
 
 public:
     explicit Motors(Serial&);
