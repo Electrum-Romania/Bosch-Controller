@@ -31,8 +31,8 @@ cv::Mat warp_lane(cv::Mat src, Pdata* pdata, const Options* options) {
 
 	mask_points.push_back(point1);
 	mask_points.push_back(point2);
-	mask_points.push_back(point3);
 	mask_points.push_back(point4);
+	mask_points.push_back(point3);
 
 	pdata->lanes_perspective_mask = mask_points;
 
@@ -52,8 +52,23 @@ cv::Mat warp_lane(cv::Mat src, Pdata* pdata, const Options* options) {
 
 }
 
+cv::Mat extract_white(cv::Mat src, Pdata* pdata, const Options* options) {
+	cv::Mat maskYellow, maskWhite;
+
+	cv::inRange(src, cv::Scalar(20, 100, 100), cv::Scalar(30, 255, 255), maskYellow);
+	cv::inRange(src, cv::Scalar(150, 150, 150), cv::Scalar(255, 255, 255), maskWhite);
+
+	cv::Mat mask, processed;
+	cv::bitwise_or(maskYellow, maskWhite, mask);
+	cv::bitwise_and(src, mask, processed);	
+
+	return processed;
+}
+
 void LaneDetection::compute(Pdata* pdata, const Options* options)
 {
 	pdata->lanes_perspective = warp_lane(pdata->camera_image, pdata, options);
+	cv::cvtColor(pdata->lanes_perspective, pdata->lanes_gray, cv::COLOR_RGB2GRAY);	
+	pdata->lanes_white = extract_white(pdata->lanes_gray, pdata, options);
 }
 
