@@ -30,4 +30,5 @@ void Motors::compute_frame() {
         if (response != "1:ack;;")
             logger.log(screen_index, LogLevel::WARN, "Nucleo error: " + response);
     }
+
 }
