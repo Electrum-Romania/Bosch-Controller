@@ -1,3 +1,0 @@
-/home/snou/Bosch-Controller/build/CMakeFiles/controller.dir
-/home/snou/Bosch-Controller/build/CMakeFiles/edit_cache.dir
-/home/snou/Bosch-Controller/build/CMakeFiles/rebuild_cache.dir
