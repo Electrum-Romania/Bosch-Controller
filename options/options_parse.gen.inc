@@ -130,6 +130,87 @@ std::cerr << "Invalid argument when parsing lane_perspective_stoproof: " << e.wh
 std::cerr << "Out of range when parsing lane_perspective_stoproof: " << e.what() << std::endl;
 }
 }
+if (command == "lane_threshold") {
+try {
+current->lane_threshold = std::stoi(arg);
+} catch (const std::invalid_argument& e) {
+std::cerr << "Invalid argument when parsing lane_threshold: " << e.what() << std::endl;
+} catch (const std::out_of_range& e) {
+std::cerr << "Out of range when parsing lane_threshold: " << e.what() << std::endl;
+}
+}
+if (command == "lane_left_rect_x") {
+try {
+current->lane_left_rect_x = std::stoi(arg);
+} catch (const std::invalid_argument& e) {
+std::cerr << "Invalid argument when parsing lane_left_rect_x: " << e.what() << std::endl;
+} catch (const std::out_of_range& e) {
+std::cerr << "Out of range when parsing lane_left_rect_x: " << e.what() << std::endl;
+}
+}
+if (command == "lane_left_rect_y") {
+try {
+current->lane_left_rect_y = std::stoi(arg);
+} catch (const std::invalid_argument& e) {
+std::cerr << "Invalid argument when parsing lane_left_rect_y: " << e.what() << std::endl;
+} catch (const std::out_of_range& e) {
+std::cerr << "Out of range when parsing lane_left_rect_y: " << e.what() << std::endl;
+}
+}
+if (command == "lane_left_rect_width") {
+try {
+current->lane_left_rect_width = std::stoi(arg);
+} catch (const std::invalid_argument& e) {
+std::cerr << "Invalid argument when parsing lane_left_rect_width: " << e.what() << std::endl;
+} catch (const std::out_of_range& e) {
+std::cerr << "Out of range when parsing lane_left_rect_width: " << e.what() << std::endl;
+}
+}
+if (command == "lane_left_rect_height") {
+try {
+current->lane_left_rect_height = std::stoi(arg);
+} catch (const std::invalid_argument& e) {
+std::cerr << "Invalid argument when parsing lane_left_rect_height: " << e.what() << std::endl;
+} catch (const std::out_of_range& e) {
+std::cerr << "Out of range when parsing lane_left_rect_height: " << e.what() << std::endl;
+}
+}
+if (command == "lane_right_rect_x") {
+try {
+current->lane_right_rect_x = std::stoi(arg);
+} catch (const std::invalid_argument& e) {
+std::cerr << "Invalid argument when parsing lane_right_rect_x: " << e.what() << std::endl;
+} catch (const std::out_of_range& e) {
+std::cerr << "Out of range when parsing lane_right_rect_x: " << e.what() << std::endl;
+}
+}
+if (command == "lane_right_rect_y") {
+try {
+current->lane_right_rect_y = std::stoi(arg);
+} catch (const std::invalid_argument& e) {
+std::cerr << "Invalid argument when parsing lane_right_rect_y: " << e.what() << std::endl;
+} catch (const std::out_of_range& e) {
+std::cerr << "Out of range when parsing lane_right_rect_y: " << e.what() << std::endl;
+}
+}
+if (command == "lane_right_rect_width") {
+try {
+current->lane_right_rect_width = std::stoi(arg);
+} catch (const std::invalid_argument& e) {
+std::cerr << "Invalid argument when parsing lane_right_rect_width: " << e.what() << std::endl;
+} catch (const std::out_of_range& e) {
+std::cerr << "Out of range when parsing lane_right_rect_width: " << e.what() << std::endl;
+}
+}
+if (command == "lane_right_rect_height") {
+try {
+current->lane_right_rect_height = std::stoi(arg);
+} catch (const std::invalid_argument& e) {
+std::cerr << "Invalid argument when parsing lane_right_rect_height: " << e.what() << std::endl;
+} catch (const std::out_of_range& e) {
+std::cerr << "Out of range when parsing lane_right_rect_height: " << e.what() << std::endl;
+}
+}
 if (command == "web_feed_post_server") {
 current->web_feed_post_server = std::move(arg);
 }

@@ -14,5 +14,14 @@ cs.register_command("lane_perspective_startfloor", this, parse_new_option_wrappe
 cs.register_command("lane_perspective_stopfloor", this, parse_new_option_wrapper);
 cs.register_command("lane_perspective_startroof", this, parse_new_option_wrapper);
 cs.register_command("lane_perspective_stoproof", this, parse_new_option_wrapper);
+cs.register_command("lane_threshold", this, parse_new_option_wrapper);
+cs.register_command("lane_left_rect_x", this, parse_new_option_wrapper);
+cs.register_command("lane_left_rect_y", this, parse_new_option_wrapper);
+cs.register_command("lane_left_rect_width", this, parse_new_option_wrapper);
+cs.register_command("lane_left_rect_height", this, parse_new_option_wrapper);
+cs.register_command("lane_right_rect_x", this, parse_new_option_wrapper);
+cs.register_command("lane_right_rect_y", this, parse_new_option_wrapper);
+cs.register_command("lane_right_rect_width", this, parse_new_option_wrapper);
+cs.register_command("lane_right_rect_height", this, parse_new_option_wrapper);
 cs.register_command("web_feed_post_server", this, parse_new_option_wrapper);
 cs.register_command("web_feed_post_raw_image_path", this, parse_new_option_wrapper);
