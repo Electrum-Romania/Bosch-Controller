@@ -68,6 +68,9 @@ void Analysis::create_analysis(Pdata* pdata, const Options* options, cv::Mat& ou
     else if(mode == "lanes_result") {
         output = pdata->lanes_result;
     }
+    else if(mode == "lanes_window") {
+        output = pdata->lanes_window;
+    }
     else {
         output = pdata->camera_image;
     }

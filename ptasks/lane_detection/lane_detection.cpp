@@ -81,14 +81,18 @@ cv::Mat fill_gaps(cv::Mat src, Pdata* pdata, const Options* options) {
 	return dst;
 }
 
-std::vector<cv::Point2f> slidingWindow(cv::Mat image, cv::Rect window)
+std::vector<cv::Point2f> slidingWindow(cv::Mat image, cv::Rect window, Pdata* pdata)
 {
+	pdata->lanes_window = image;
     std::vector<cv::Point2f> points;
     const cv::Size imgSize = image.size();
     bool shouldBreak = false;
-    
+    int lastX = 0;
+
     while (true)
     {
+		cv::rectangle(pdata->lanes_window, window, cv::Scalar(255, 255, 0));
+
         float currentX = window.x + window.width * 0.5f;
         
         cv::Mat roi= image(window); 
@@ -101,8 +105,9 @@ std::vector<cv::Point2f> slidingWindow(cv::Mat image, cv::Rect window)
             float x = locations[i].x;
             avgX += window.x + x;
         }
-        
-        avgX = locations.empty() ? currentX : avgX / locations.size();
+
+        avgX = locations.empty() ? lastX : avgX / locations.size();
+		lastX = avgX;
         
         cv::Point point(avgX, window.y + window.height * 0.5f);
         points.push_back(point);
@@ -124,8 +129,10 @@ std::vector<cv::Point2f> slidingWindow(cv::Mat image, cv::Rect window)
         
         if (shouldBreak)
             break;
+
+		
     }
-    
+	
     return points;
 }
 
@@ -138,7 +145,7 @@ void LaneDetection::compute(Pdata* pdata, const Options* options)
 	pdata->lanes_filled = fill_gaps(pdata->lanes_white, pdata, options);
 	cv::threshold(pdata->lanes_filled, pdata->lanes_thresh, options->lane_threshold, 255, cv::THRESH_BINARY);
 
-	std::vector<cv::Point2f> pts = slidingWindow(pdata->lanes_thresh, cv::Rect(options->lane_left_rect_x, options->lane_left_rect_y, options->lane_left_rect_width, options->lane_left_rect_height));
+	std::vector<cv::Point2f> pts = slidingWindow(pdata->lanes_thresh, cv::Rect(options->lane_left_rect_x, options->lane_left_rect_y, options->lane_left_rect_width, options->lane_left_rect_height), pdata);
 	std::vector<cv::Point> allPts; 
 	std::vector<cv::Point2f> outPts;
 
@@ -156,7 +163,7 @@ void LaneDetection::compute(Pdata* pdata, const Options* options)
 	for (int i = 0; i < pts.size() - 1; ++i)    
 		cv::line(out, pts[i], pts[i + 1], cv::Scalar(255, 0, 0));
 
-	pts = slidingWindow(pdata->lanes_thresh, cv::Rect(options->lane_right_rect_x, options->lane_right_rect_y, options->lane_right_rect_width, options->lane_right_rect_height));
+	pts = slidingWindow(pdata->lanes_thresh, cv::Rect(options->lane_right_rect_x, options->lane_right_rect_y, options->lane_right_rect_width, options->lane_right_rect_height), pdata);
 	cv::perspectiveTransform(pts, outPts, pdata->lanes_inverted);
 	for (int i = 0; i < outPts.size() - 1; ++i)
 	{

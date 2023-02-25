@@ -9,4 +9,5 @@ cv::Mat lanes_dilate;
 cv::Mat lanes_erode;
 cv::Mat lanes_filled;
 cv::Mat lanes_thresh;
+cv::Mat lanes_window;
 cv::Mat lanes_result;
