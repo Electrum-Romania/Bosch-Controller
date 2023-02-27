@@ -25,8 +25,10 @@ cv::Mat draw_quad_mask(Pdata* pdata)
     //     lineType );
 
     for(int i = 0; i < 4; i++) {
-        cv::line(img, pdata->lanes_perspective_mask[i], pdata->lanes_perspective_mask[i+1], cv::Scalar(255, 255, 255), 5);
-        if(i == 3) {
+        if(i < 3) {
+            cv::line(img, pdata->lanes_perspective_mask[i], pdata->lanes_perspective_mask[i+1], cv::Scalar(255, 255, 255), 5);
+        }
+        else if(i == 3) {
             cv::line(img, pdata->lanes_perspective_mask[i], pdata->lanes_perspective_mask[0], cv::Scalar(255, 255, 255), 5);
         }
     }
@@ -55,8 +57,19 @@ void Analysis::create_analysis(Pdata* pdata, const Options* options, cv::Mat& ou
         output = draw_quad_mask(pdata);
     }
     else if(mode == "lanes_alo") {
-        std::cout << "aaaaa" << std::endl;
         output = create_blank_image();
+    }
+    else if(mode == "lanes_gray") {
+        output = pdata->lanes_gray;
+    }
+    else if(mode == "lanes_white") {
+        output = pdata->lanes_white;
+    }
+    else if(mode == "lanes_result") {
+        output = pdata->lanes_result;
+    }
+    else if(mode == "lanes_window") {
+        output = pdata->lanes_window;
     }
     else {
         output = pdata->camera_image;

@@ -15,3 +15,15 @@ int lane_perspective_startfloor = 250;
 int lane_perspective_stopfloor = 750;
 int lane_perspective_startroof = 250;
 int lane_perspective_stoproof = 750;
+
+int lane_threshold = 150;
+
+int lane_left_rect_x = 0;
+int lane_left_rect_y = 300;
+int lane_left_rect_width = 30;
+int lane_left_rect_height = 40;
+
+int lane_right_rect_x = 200;
+int lane_right_rect_y = 300;
+int lane_right_rect_width = 30;
+int lane_right_rect_height = 40;
