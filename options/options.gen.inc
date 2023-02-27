@@ -1,4 +1,6 @@
 struct Options {
+std::string analysis1_mode;
+std::string analysis2_mode;
 int lane_detection_crop_floor;
 int lane_detection_crop_roof;
 int lane_detection_crop_x_start;

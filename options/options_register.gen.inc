@@ -1,3 +1,5 @@
+cs.register_command("analysis1_mode", this, parse_new_option_wrapper);
+cs.register_command("analysis2_mode", this, parse_new_option_wrapper);
 cs.register_command("lane_detection_crop_floor", this, parse_new_option_wrapper);
 cs.register_command("lane_detection_crop_roof", this, parse_new_option_wrapper);
 cs.register_command("lane_detection_crop_x_start", this, parse_new_option_wrapper);

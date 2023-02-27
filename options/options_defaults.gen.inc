@@ -1,3 +1,5 @@
+def->analysis1_mode = "raw";
+def->analysis2_mode = "raw";
 def->lane_detection_crop_floor = 0;
 def->lane_detection_crop_roof = 250;
 def->lane_detection_crop_x_start = 200;

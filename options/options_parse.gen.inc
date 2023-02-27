@@ -1,3 +1,9 @@
+if (command == "analysis1_mode") {
+current->analysis1_mode = std::move(arg);
+}
+if (command == "analysis2_mode") {
+current->analysis2_mode = std::move(arg);
+}
 if (command == "lane_detection_crop_floor") {
 try {
 current->lane_detection_crop_floor = std::stoi(arg);

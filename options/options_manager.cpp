@@ -1,4 +1,4 @@
-#include "options_manager.h"
+	#include "options_manager.h"
 
 OptionsManager::OptionsManager(command_socket &cs)
 	: def(get_defs()), current(new Options)

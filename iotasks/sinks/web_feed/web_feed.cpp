@@ -29,9 +29,10 @@ void WebFeed::compute_frame()
 	if (dead)
 		return;
 
-    write_image_to_connection(pdata->camera_image, camera_conn);
+    write_image_to_connection(pdata->analysis1, camera_conn);
 
-    write_image_to_connection(pdata->analysis, analysis_conn);
+
+    write_image_to_connection(pdata->analysis2, analysis_conn);
 }
 
 void WebFeed::write_image_to_connection(cv::Mat& image, sockpp::tcp_connector &conn)
