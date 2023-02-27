@@ -31,6 +31,8 @@ add_executable(
 		ptasks/ptask.h
 		ptasks/pool.cpp
 		ptasks/pool.h
+		ptasks/control/control.cpp
+		ptasks/control/control.h
 		ptasks/lane_detection/lane_detection.cpp
 		ptasks/lane_detection/lane_detection.h
 
