@@ -1,0 +1,8 @@
+//
+// Created by grffn on 3/8/23.
+//
+
+#ifndef CONTROLLERPROJECT_SINK_H
+#define CONTROLLERPROJECT_SINK_H
+
+#endif //CONTROLLERPROJECT_SINK_H
