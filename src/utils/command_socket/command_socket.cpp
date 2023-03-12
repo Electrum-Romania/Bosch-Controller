@@ -1,25 +1,23 @@
-#include "command_socket.h"
-#include "../../controller.h"
+#include <utils/command_socket/command_socket.h>
 
-command_socket::command_socket(const std::string& host, uint16_t port)
-    : conn({host, port}), dead(false), thread([this] () {
+CommandSocket::CommandSocket(const std::string& host, uint16_t port)
+    : Loggable("CS", 'C'), conn({host, port}), thread([this] () {
         run();
     })
 {
-    screen_index = logger.request_screen('c', "CS");
 }
 
-void command_socket::register_command(const std::string& cname, void *object, command_callback f)
+void CommandSocket::register_command(const std::string& cname, void *object, CommandCallback f)
 {
-    logger.log(screen_index, LogLevel::INFO, "registering command " + cname);
+    log(LogLevel::INFO, "registering command " + cname);
     commands.insert({cname, {object, f}});
 }
 
-void command_socket::run()
+void CommandSocket::run()
 {
     // check connection initialization
     if (!conn) {
-        logger.log(screen_index, LogLevel::ERROR, "Error connecting to server: " + conn.last_error_str());
+        log(LogLevel::ERROR, "Error connecting to server: " + conn.last_error_str());
 
         dead = true;
     }
@@ -32,9 +30,7 @@ void command_socket::run()
         std::string cname = line.substr(0, delimiter_positon);
         std::string arg = line.substr(delimiter_positon + 1, line.length() - 2 - delimiter_positon);
 
-        std::cout << "(" << cname << ")=(" << arg << ")" << std::endl;
-
-        const command &c = commands.at(cname);
+        const Command &c = commands.at(cname);
 
         c.callback(c.object, cname, arg);
     }

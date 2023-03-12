@@ -1,7 +1,7 @@
 #ifndef PATSKS_LANE_DETECTION_H
 #define PTASKS_LANE_DETECTION_H
 
-#include "../ptask.h"
+#include <ptasks/ptask.h>
 
 class LaneDetection : public Ptask {
 public:

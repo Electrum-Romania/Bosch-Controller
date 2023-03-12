@@ -1,22 +1,12 @@
-#include "camera.h"
+#include <iotasks/sensors/camera/camera.h>
 
-#include <chrono>
 #include <iostream>
-#include <thread>
 
 Camera::Camera()
-	: IOtask("Camera", 'c'), camera(0)
+	: Sensor("Camera", 'c'), camera(0)
 {
-	//image = cv::imread("./test_image.jpg");
-
-    //    // Check for failure
-   //     if (image.empty()) {
-    //            std::cerr << "Could not open or find the image" << std::endl;
-	//	std::exit(1);
-    //    }
-
 	if (!camera.isOpened()) {
-		logger.log(screen_index, LogLevel::FATAL, "Could not open camera feed!");
+		log(LogLevel::FATAL, "Could not open camera feed!");
 		std::exit(1);
 	}
 }
@@ -30,7 +20,7 @@ void Camera::compute_frame()
 	camera.read(image);
 
 	if (image.empty()) {
-        logger.log(screen_index, LogLevel::ERROR, "ERROR! blank frame grabbed");
+        log(LogLevel::ERROR, "ERROR! blank frame grabbed");
 		return;
 	}
 

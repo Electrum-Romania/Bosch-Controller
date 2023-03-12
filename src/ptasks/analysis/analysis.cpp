@@ -1,4 +1,4 @@
-#include "./analysis.h"
+#include <ptasks/analysis/analysis.h>
 
 Analysis::Analysis() : Ptask("Analysis", 'A') {
 
@@ -74,7 +74,6 @@ void Analysis::create_analysis(Pdata* pdata, const Options* options, cv::Mat& ou
     else {
         output = pdata->camera_image;
     }
-    
 }
 
 // cv::Mat draw_triangle_mask(cv::Size size, std::vector<cv::Point> points)

@@ -1,36 +1,34 @@
 #ifndef UTILS_COMMAND_SOCKET_H
 #define UTILS_COMMAND_SOCKET_H
 
+#include <controller.h>
+
 #include <unordered_map>
 #include <thread>
 
-#include "line_reader.h"
+#include <utils/command_socket/line_reader.h>
+#include <utils/loggable/loggable.h>
 
-typedef void (*command_callback) (void *, const std::string&, const std::string&);
+typedef void (*CommandCallback) (void *, const std::string&, const std::string&);
 
-class command_socket {
+class CommandSocket : public Loggable {
 private:
-    struct command {
+    struct Command {
         void *object;
-        command_callback callback;
+        CommandCallback callback;
     };
 
-    line_reader conn;
-
-    bool dead;
-
+    bool dead = false;
+    LineReader conn;
     std::thread thread;
 
-    std::unordered_map<std::string, command> commands;
-
-    int screen_index;
+    std::unordered_map<std::string, Command> commands;
 
 public:
-    command_socket(const std::string& host, uint16_t port);
+    CommandSocket(const std::string& host, uint16_t port);
 
     void run();
-
-    void register_command(const std::string &cname, void *object, command_callback f);
+    void register_command(const std::string &cname, void *object, CommandCallback f);
 };
 
 #endif //UTILS_COMMAND_SOCKET_H

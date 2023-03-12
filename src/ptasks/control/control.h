@@ -1,15 +1,10 @@
 #ifndef CONTROLLER_CONTROL_HPP
 #define CONTROLLER_CONTROL_HPP
 
-#include "../ptask.h"
+#include <ptasks/ptask.h>
 
 class Control : public Ptask {
 private:
-    int road_angle_watch_index;
-    int car_x_pos_watch_index;
-    int car_delta_x_watch_index;
-    int control_angle_watch_index;
-    int control_command_watch_index;
 
 public:
     Control();

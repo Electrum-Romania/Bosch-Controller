@@ -1,6 +1,4 @@
-#include "serial.h"
-
-#include "../../controller.h"
+#include <utils/serial/serial.h>
 
 #include <cerrno>
 #include <cstdarg>

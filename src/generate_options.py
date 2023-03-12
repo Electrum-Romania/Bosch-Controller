@@ -63,7 +63,7 @@ def create_used_maps() -> (Dict[str, List[str]], Dict[str, List[str]]):
                 elif class_name not in pdata_used_by[option_name]:
                     pdata_used_by[option_name] += [class_name]
 
-            if token.token_value == 'options_manager' and token.token_type == TokenType.IDENTIFIER and \
+            if token.token_value == 'options' and token.token_type == TokenType.IDENTIFIER and \
                     next_token.token_value == '->' and next_token.token_type == TokenType.OPERATOR and \
                     next_next_token.token_type == TokenType.IDENTIFIER:
 
@@ -91,15 +91,26 @@ struct StaticOptions {
     _static_options_declaration_file_footer = '};'
 
     _options_declaration_file_header = '''///
-/// \\file options_manager.gen.h
+/// \\file options.gen.h
 /// \\brief Options struct
 
 ///
-/// \\brief Hot swappable-options_manager
+/// \\brief Hot swappable-options
 struct Options {
 '''
 
     _options_declaration_file_footer = '};'
+
+    _pdata_declaration_file_header = '''///
+/// \\file pdata.gen.h
+/// \\brief Pdata struct
+
+///
+/// \\brief Frame data
+struct Pdata {
+'''
+
+    _pdata_declaration_file_footer = '};'
 
     def __init__(self, input_files: Iterable[str], static: bool = False, pdata: bool = False,
                  used_by: Dict[str, List[str]] = None, command_line_options: Dict[str, str] = None):
@@ -152,6 +163,9 @@ struct Options {
         if self._static:
             declaration_file_header = Options._static_options_declaration_file_header
             declaration_file_footer = Options._static_options_declaration_file_footer
+        elif self._pdata:
+            declaration_file_header = Options._pdata_declaration_file_header
+            declaration_file_footer = Options._pdata_declaration_file_footer
         else:
             declaration_file_header = Options._options_declaration_file_header
             declaration_file_footer = Options._options_declaration_file_footer
@@ -164,7 +178,7 @@ struct Options {
                     print(option['doxygen'], file=output_file)
 
                 if 'default' in option:
-                    print('/// \\note Default value is `' + option['default'] + '`', file=output_file)
+                    print('/// \\note Default value is `' + option['default'] + '`.', file=output_file)
 
                 first_used_by = True
 
@@ -269,7 +283,7 @@ struct Options {
                 print('}', file=output_file)
 
     def print_using_options(self):
-        print('Configured using static options_manager:\n')
+        print('Configured using static options:\n')
         for option in self._options:
             print('    ', end='')
             print(option['name'], end=' ')
@@ -303,9 +317,9 @@ def main():
 
     (pdata_used_by, option_used_by) = create_used_maps()
 
-    options = Options(find_files('.', 'options_manager.inc'), used_by=option_used_by)
+    options = Options(find_files('.', 'options.inc'), used_by=option_used_by)
 
-    options.print_declaration_file('generated/options_manager.gen.h')
+    options.print_declaration_file('generated/options.gen.h')
     options.print_set_default('generated/options_defaults.gen.inc')
     options.print_register('generated/options_register.gen.inc')
     options.print_parser('generated/options_parse.gen.inc')

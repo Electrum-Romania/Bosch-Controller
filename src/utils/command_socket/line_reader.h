@@ -5,14 +5,14 @@
 
 constexpr size_t buffer_size = 1024;
 
-class line_reader {
+class LineReader {
 private:
     sockpp::tcp_connector conn;
 
     std::vector<uint8_t> buf;
 
 public:
-    line_reader(const std::string& host, uint16_t port);
+    LineReader(const std::string& host, uint16_t port);
 
     std::string read_line();
 

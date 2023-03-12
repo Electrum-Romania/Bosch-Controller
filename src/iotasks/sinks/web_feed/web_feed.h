@@ -1,12 +1,12 @@
 #ifndef IOTASKS_SINKS_WEBFEED_H
 #define IOTASKS_SINKS_WEBFEED_H
 
-#include "../../iotask.h"
+#include <iotasks/sinks/sink.h>
 
 #include <sockpp/tcp_connector.h>
 #include <opencv2/opencv.hpp>
 
-class WebFeed : public IOtask {
+class WebFeed final : public Sink {
 private:
 	sockpp::tcp_connector camera_conn;
     sockpp::tcp_connector analysis_conn;
@@ -18,8 +18,9 @@ private:
 	
 public:
 	WebFeed(const std::string& host, uint16_t camera_port, uint16_t analysis_port);
+    ~WebFeed() final = default;
 
-	void compute_frame() override;
+	void compute_frame() final;
 };
 
 #endif

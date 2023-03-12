@@ -1,18 +1,16 @@
+#include <ptasks/ptask.h>
+
 #include <chrono>
 #include <utility>
-
-#include "ptask.h"
 
 namespace chrono = std::chrono;
 
 int Ptask::timings_screen = -1;
 std::unordered_map<std::string, int> Ptask::title_to_watch_value;
 
-Ptask::Ptask(std::string name, int key)
-    : name(name)
+Ptask::Ptask(std::string name, int key, std::vector<Loggable::WatchPair> wp)
+    : Loggable(name, key, wp), name(name)
 {
-    screen_index = logger.request_screen(key, name);
-    watch_index = logger.request_watch(key, std::move(name));
 }
 
 Ptask::~Ptask() = default;

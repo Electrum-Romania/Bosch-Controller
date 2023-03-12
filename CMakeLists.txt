@@ -13,44 +13,42 @@ find_package(Curses REQUIRED)
 add_executable(
 		controller
 
-		main.cpp
-		sched.cpp
+		src/main.cpp
+		src/sched.cpp
 
-		controller.h
+		src/controller.h
 
-		iotasks/iotask.cpp
-		iotasks/iotask.h
-		iotasks/sensors/camera/camera.cpp
-		iotasks/sensors/camera/camera.h
-		iotasks/sinks/window_feed/window_feed.cpp
-		iotasks/sinks/window_feed/window_feed.h
-		iotasks/sinks/web_feed/web_feed.cpp
-		iotasks/sinks/web_feed/web_feed.h
+		src/iotasks/iotask.cpp
+		src/iotasks/iotask.h
+		src/iotasks/sensors/camera/camera.cpp
+		src/iotasks/sensors/camera/camera.h
+		src/iotasks/sinks/web_feed/web_feed.cpp
+		src/iotasks/sinks/web_feed/web_feed.h
 
-		ptasks/ptask.cpp
-		ptasks/ptask.h
-		ptasks/pool.cpp
-		ptasks/pool.h
-		ptasks/control/control.cpp
-		ptasks/control/control.h
-		ptasks/lane_detection/lane_detection.cpp
-		ptasks/lane_detection/lane_detection.h
-		ptasks/analysis/analysis.cpp
-		ptasks/analysis/analysis.h
+		src/ptasks/ptask.cpp
+		src/ptasks/ptask.h
+		src/ptasks/pool.cpp
+		src/ptasks/pool.h
+		src/ptasks/control/control.cpp
+		src/ptasks/control/control.h
+		src/ptasks/lane_detection/lane_detection.cpp
+		src/ptasks/lane_detection/lane_detection.h
+		src/ptasks/analysis/analysis.cpp
+		src/ptasks/analysis/analysis.h
 
-		options/options_manager.cpp
-		options/options_manager.h
+		src/utils/options_manager/options_manager.cpp
+		src/utils/options_manager/options_manager.h
 
-		utils/serial/serial.cpp
-		utils/serial/serial.h
-		utils/command_socket/command_socket.cpp
-		utils/command_socket/command_socket.h
-		utils/command_socket/line_reader.cpp
-		utils/command_socket/line_reader.h
-		iotasks/sensors/keyboard/keyboard.cpp iotasks/sensors/keyboard/keyboard.h iotasks/sinks/motors/motors.cpp iotasks/sinks/motors/motors.h)
+		src/utils/serial/serial.cpp
+		src/utils/serial/serial.h
+		src/utils/command_socket/command_socket.cpp
+		src/utils/command_socket/command_socket.h
+		src/utils/command_socket/line_reader.cpp
+		src/utils/command_socket/line_reader.h
+		src/iotasks/sensors/keyboard/keyboard.cpp src/iotasks/sensors/keyboard/keyboard.h src/iotasks/sinks/motors/motors.cpp src/iotasks/sinks/motors/motors.h src/utils/loggable/loggable.cpp src/utils/loggable/loggable.h src/iotasks/sinks/sink.h src/iotasks/sinks/sink.h src/iotasks/sensors/sensor.h)
 
 target_link_libraries(controller ${OpenCV_LIBS} sockpp nclogger::nclogger ${CURSES_LIBRARIES})
-target_include_directories(controller PRIVATE ${CURSES_INCLUDE_DIR})
+target_include_directories(controller PRIVATE ${CURSES_INCLUDE_DIR} src/)
 
 target_compile_features(controller PRIVATE cxx_std_20)
 

@@ -1,26 +1,22 @@
-//
-// Created by grffn on 2/15/23.
-//
-
 #ifndef CONTROLLERPROJECT_MOTORS_H
 #define CONTROLLERPROJECT_MOTORS_H
 
-#include "../../iotask.h"
-#include "../../../utils/serial/serial.h"
+#include <iotasks/sinks/sink.h>
 
-class Motors : public IOtask {
+#include <iotasks/iotask.h>
+#include <utils/serial/serial.h>
+
+class Motors final : public Sink {
 private:
     double current_motor_speed{};
     double current_ster{};
     Serial &nucleo;
 
-    int current_motor_speed_watch_value_index;
-    int current_steer_watch_value_index;
-
 public:
     explicit Motors(Serial&);
+    ~Motors() final = default;
 
-    void compute_frame() override;
+    void compute_frame() final;
 };
 
 

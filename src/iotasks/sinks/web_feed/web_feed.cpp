@@ -1,22 +1,21 @@
-#include "web_feed.h"
+#include <iotasks/sinks/web_feed/web_feed.h>
 
 WebFeed::WebFeed(const std::string& host, uint16_t camera_port, uint16_t analysis_port)
-	: IOtask("WebFeed", 'p'),
+	: Sink("WebFeed", 'p'),
     camera_conn({host, camera_port}),
     analysis_conn({host, analysis_port}),
     dead(false)
 {
 	if (!camera_conn) {
-		logger.log(screen_index, LogLevel::ERROR, "Error connecting to server: "
-                + analysis_conn.last_error_str());
+		log(LogLevel::ERROR, "Error connecting to server: " + analysis_conn.last_error_str());
 
 		dead = true;
 
 		return;
 	}
+
     if (!analysis_conn) {
-        logger.log(screen_index, LogLevel::ERROR, "Error connecting to server: "
-                                                  + analysis_conn.last_error_str());
+        log(LogLevel::ERROR, "Error connecting to server: " + analysis_conn.last_error_str());
 
         dead = true;
 
@@ -60,7 +59,7 @@ void WebFeed::write_jpeg_to_connection(std::vector<unsigned char>& jpeg, sockpp:
     if (conn.write_n(raw_image_len_encoded, 4) == -1
         || conn.write_n(jpeg.data(), jpeg.size()) == -1) {
 
-        logger.log(screen_index, LogLevel::ERROR, "Error writing data" + conn.last_error_str());
+        log(LogLevel::ERROR, "Error writing data" + conn.last_error_str());
 
         dead = true;
 

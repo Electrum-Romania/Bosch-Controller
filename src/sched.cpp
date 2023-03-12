@@ -1,20 +1,17 @@
-#include "controller.h"
+#include <controller.h>
 
-#include "iotasks/iotask.h"
-#include "iotasks/sensors/camera/camera.h"
-#include "iotasks/sinks/window_feed/window_feed.h"
-#include "iotasks/sinks/web_feed/web_feed.h"
+#include <iotasks/iotask.h>
+#include <iotasks/sensors/camera/camera.h>
+#include <iotasks/sensors/keyboard/keyboard.h>
+#include <iotasks/sinks/web_feed/web_feed.h>
 
-#include "ptasks/ptask.h"
-#include "ptasks/pool.h"
-#include "ptasks/lane_detection/lane_detection.h"
-#include "ptasks/analysis/analysis.h"
-#include "ptasks/control/control.h"
+#include <ptasks/ptask.h>
+#include <ptasks/pool.h>
+#include <ptasks/analysis/analysis.h>
+#include <ptasks/control/control.h>
+#include <ptasks/lane_detection/lane_detection.h>
 
-#include "options/options_manager.h"
-#include "iotasks/sensors/keyboard/keyboard.h"
-#include "utils/serial/serial.h"
-#include "iotasks/sinks/motors/motors.h"
+#include <utils/options_manager/options_manager.h>
 
 #include <cassert>
 
@@ -55,10 +52,13 @@ void await_io(std::latch* l)
 {
     assert(l != nullptr);
 
-    l->wait();
+    if (l != nullptr)
+       l->wait();
 
 	delete l;
 }
+
+extern nclogger::Logger logger;
 
 [[noreturn]]
 void sched()
@@ -67,7 +67,7 @@ void sched()
 
     logger.log(sched_screen_id, LogLevel::INFO, "Begining initialization");
 
-    command_socket cs("127.0.0.1", 2266);
+    CommandSocket cs("127.0.0.1", 2266);
 	OptionsManager opt_manager(cs);
 
 	PtaskPool ptask_pool;
@@ -77,6 +77,8 @@ void sched()
 	std::vector<Ptask*> ptasks_L2;
 	std::vector<IOtask*> sinks;
 
+    // ----------- ADD TASKS HERE
+
 	sensors.push_back(new Camera());
     sensors.push_back(new Keyboard(cs));
 
@@ -85,10 +87,11 @@ void sched()
 	ptasks_L2.push_back(new Analysis());
     ptasks_L2.push_back(new Control());
 
-	//sinks.push_back(new WindowFeed("Feed"));
 	sinks.push_back(new WebFeed("127.0.0.1", 2244, 2255));
     //Serial nucleo("/dev/pts/4", B38400);
     //sinks.push_back(new Motors(nucleo));
+
+    // --------------------------
 
 	std::vector<std::thread> sensor_threads = launch_io(sensors);
 	std::vector<std::thread> sink_threads = launch_io(sinks);

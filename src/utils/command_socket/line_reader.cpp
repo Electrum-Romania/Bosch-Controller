@@ -1,12 +1,12 @@
-#include "line_reader.h"
+#include <utils/command_socket/line_reader.h>
 
-line_reader::line_reader(const std::string& host, uint16_t port)
+LineReader::LineReader(const std::string& host, uint16_t port)
     : conn({host, port})
 {
 
 }
 
-std::string line_reader::read_line()
+std::string LineReader::read_line()
 {
     char b[buffer_size];
     char *p;
@@ -37,12 +37,12 @@ std::string line_reader::read_line()
     }
 }
 
-line_reader::operator bool()
+LineReader::operator bool()
 {
     return (bool) conn;
 }
 
-std::string line_reader::last_error_str()
+std::string LineReader::last_error_str()
 {
     return conn.last_error_str();
 }

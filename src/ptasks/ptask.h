@@ -1,23 +1,21 @@
 #ifndef PTASKS_PTASK_H
 #define PTASKS_PTASK_H
 
-#include "../../controller.h"
+#include <controller.h>
 
 #include <string>
 
-class Ptask {
+#include <utils/loggable/loggable.h>
+
+class Ptask : public Loggable {
 private:
 	std::string name;
 
     static int timings_screen;
     static std::unordered_map<std::string, int> title_to_watch_value;
 
-protected:
-    int watch_index;
-    int screen_index;
-
 public:
-	explicit Ptask(std::string name, int key);
+	explicit Ptask(std::string name, int key, std::vector<Loggable::WatchPair> wp = {});
 
     ~Ptask();
 

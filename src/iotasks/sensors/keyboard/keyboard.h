@@ -1,23 +1,18 @@
-//
-// Created by grffn on 2/15/23.
-//
-
 #ifndef CONTROLLERPROJECT_KEYBOARD_H
 #define CONTROLLERPROJECT_KEYBOARD_H
 
-#include "../../../controller.h"
-#include "../../iotask.h"
-#include "../../../utils/command_socket/command_socket.h"
+#include <controller.h>
 
+#include <iotasks/sensors/sensor.h>
+#include <utils/command_socket/command_socket.h>
 
-
-class Keyboard : public IOtask {
+class Keyboard : public Sensor {
 private:
     std::mutex mux;
     PressedKeys pressed_keys;
 
 public:
-    Keyboard(command_socket &cs);
+    explicit Keyboard(CommandSocket &cs);
     ~Keyboard() override;
 
     void compute_frame() override;

@@ -1,13 +1,25 @@
-#include "control.h"
+#include <ptasks/control/control.h>
+
+enum {
+    watch_road_angle,
+    watch_car_x,
+    watch_car_delta_x,
+    watch_control_angle,
+    watch_control_command,
+};
+
+static
+std::vector<Loggable::WatchPair> watch_pairs {
+        {watch_road_angle, "Road Angle", 6},
+        {watch_car_x, "Car X Position", 6},
+        {watch_car_delta_x, "Car X Offset", 6},
+        {watch_control_angle, "Control Angle", 6},
+        {watch_control_command, "Control Command", 6},
+};
 
 Control::Control()
-    : Ptask("Control", 'c')
+    : Ptask("Control", 'c', watch_pairs)
 {
-    road_angle_watch_index       = logger.register_watch_value(watch_index, "road angle", 6);
-    car_x_pos_watch_index        = logger.register_watch_value(watch_index, "road angle", 6);
-    car_delta_x_watch_index      = logger.register_watch_value(watch_index, "road angle", 6);
-    control_angle_watch_index    = logger.register_watch_value(watch_index, "road angle", 6);
-    control_command_watch_index  = logger.register_watch_value(watch_index, "road angle", 6);
 }
 
 static inline
@@ -43,11 +55,11 @@ void Control::lane_correction(Pdata *pdata, const Options *options)
 
     double control_command = control_angle / (options->control_steer_max_angle / options->control_steer_max_command);
 
-    logger.set_watch_value(watch_index, road_angle_watch_index, format_double(road_angle));
-    logger.set_watch_value(watch_index, car_x_pos_watch_index, format_int(car_x_pos));
-    logger.set_watch_value(watch_index, car_delta_x_watch_index, format_int(car_delta_x_pos));
-    logger.set_watch_value(watch_index, control_angle_watch_index, format_double(control_angle));
-    logger.set_watch_value(watch_index, control_command_watch_index, format_double(control_command));
+    set_watch_value(watch_road_angle, format_double(road_angle));
+    set_watch_value(watch_car_x, format_int(car_x_pos));
+    set_watch_value(watch_car_delta_x, format_int(car_delta_x_pos));
+    set_watch_value(watch_control_angle, format_double(control_angle));
+    set_watch_value(watch_control_command, format_double(control_command));
 
     pdata->control_steer = control_command;
 }

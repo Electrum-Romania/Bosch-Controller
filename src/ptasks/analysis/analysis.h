@@ -1,8 +1,9 @@
 #ifndef PTASKS_ANALYSIS_H
 #define PTASKS_ANALYSIS_H
 
-#include "../ptask.h"
 #include <opencv2/opencv.hpp>
+
+#include <ptasks/ptask.h>
 
 class Analysis : public Ptask {
 public:

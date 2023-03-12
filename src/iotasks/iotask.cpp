@@ -1,15 +1,10 @@
-#include "iotask.h"
+#include <iotasks/iotask.h>
 
 #include <cassert>
 
-// using std::assert;
-
-IOtask::IOtask(std::string name, int key)
-	: busy(false), give_frame(0), done_frame(nullptr), pdata(nullptr), options(nullptr)
-{
-    screen_index = logger.request_screen(key, name);
-    watch_index = logger.request_watch(key, std::move(name));
-}
+IOtask::IOtask(std::string name, int key, const std::vector<WatchPair>& s)
+	: Loggable(std::move(name), key, s), give_frame(0)
+{}
 
 IOtask::~IOtask() = default;
 

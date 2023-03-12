@@ -1,5 +1,9 @@
-#ifndef IOTASKS_SINK_H
-#define IOTASKS_SINK_H
+///
+/// \file sensor.h
+/// \brief Sensor class.
+
+#ifndef IOTASKS_SENSOR_H
+#define IOTASKS_SENSOR_H
 
 #include <iotasks/iotask.h>
 
@@ -7,17 +11,21 @@
 
 
 ///
-/// \breif Base class for output tasks.
+/// \brief Base class for input tasks.
 ///
-/// This class is identical to the IOtask class. Output IOtasks should inherit from this class for organizational
-/// purpouses.
-class Sink : public IOtask {
+/// This class is identical to the IOtask class. Input IOtasks should inherit from this class for organizational
+/// purposes.
+class Sensor : public IOtask {
 public:
-    inline Sink(std::string name, int key, const std::vector<WatchPair>& s = {})
+    ///
+    /// \brief Calls the IOtask constructor.
+    ///
+    /// \sa IOtask::IOtask()
+    inline Sensor(std::string name, int key, const std::vector<WatchPair>& s = {})
         : IOtask(std::move(name), key, s)
     {}
 
-    ~Sink() override = default;
+    ~Sensor() override = default;
 };
 
-#endif //IOTASKS_SINK_H
+#endif //IOTASKS_SENSOR_H

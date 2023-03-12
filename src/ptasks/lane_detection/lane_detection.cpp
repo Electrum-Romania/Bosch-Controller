@@ -1,6 +1,5 @@
-#include "lane_detection.h"
+#include <ptasks/lane_detection/lane_detection.h>
 
-#include <chrono>
 #include <opencv2/opencv.hpp>
 
 // OBS input:  x: 1920
@@ -9,7 +8,8 @@
 //		   y: 366
 
 
-LaneDetection::LaneDetection() : Ptask("LaneDetection", 'l') {
+LaneDetection::LaneDetection() : Ptask("LaneDetection", 'l')
+{
 
 }
 

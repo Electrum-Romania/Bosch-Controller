@@ -1,11 +1,19 @@
-#include "motors.h"
+#include <iotasks/sinks/motors//motors.h>
+
+enum {
+    watch_current_motor_speed,
+    watch_current_steer,
+};
+
+static
+std::vector<Loggable::WatchPair> watch_pairs {
+    {watch_current_motor_speed, "Motor speed", 6},
+    {watch_current_steer, "Steer", 6},
+};
 
 Motors::Motors(Serial &serial)
-        : IOtask("motors", 'm'), nucleo(serial), current_motor_speed(0.0)
-{
-    current_motor_speed_watch_value_index = logger.register_watch_value(watch_index, "Motor speed", 6);
-    current_steer_watch_value_index = logger.register_watch_value(watch_index, "Steer value", 6);
-}
+    : Sink("motors", 'm', watch_pairs), nucleo(serial)
+{}
 
 void Motors::compute_frame()
 {
@@ -21,17 +29,13 @@ void Motors::compute_frame()
         current_motor_speed += delta_forward;
 
     if (current_motor_speed != old_speed) {
-        logger.set_watch_value(watch_index, current_motor_speed_watch_value_index,
-                               nclogger::to_string(current_motor_speed, 6, [](auto &ss) {
-                                   fixed(ss);
-                                   ss.precision(2);
-                               }));
+        set_watch_value(watch_current_motor_speed, current_motor_speed, 2);
 
         nucleo.write_command(Serial::Command::SPED, current_motor_speed);
         std::string response = nucleo.read_response();
 
         if (response != "1:ack;;")
-            logger.log(screen_index, LogLevel::WARN, "Nucleo error: " + response);
+            log(LogLevel::WARN, "Nucleo error: " + response);
     }
 
     double old_ster = current_ster;
@@ -47,33 +51,15 @@ void Motors::compute_frame()
             current_ster += delta_right;
 
         if (current_ster != old_ster) {
-            logger.set_watch_value(watch_index, current_steer_watch_value_index,
-                                   nclogger::to_string(current_ster, 6, [](auto &ss) {
-                                       fixed(ss);
-                                       ss.precision(2);
-                                   }));
+            set_watch_value(watch_current_steer, current_ster, 2);
 
             nucleo.write_command(Serial::Command::STER, current_ster);
             std::string response = nucleo.read_response();
 
             if (response != "2:ack;;")
-                logger.log(screen_index, LogLevel::WARN, "Nucleo error: " + response);
+                log(LogLevel::WARN, "Nucleo error: " + response);
         }
     } else {
         current_ster = old_ster;
-    }
-
-    if (current_ster != old_ster) {
-        logger.set_watch_value(watch_index, current_steer_watch_value_index,
-                               nclogger::to_string(current_ster, 6, [](auto &ss) {
-                                   fixed(ss);
-                                   ss.precision(2);
-                               }));
-
-        nucleo.write_command(Serial::Command::STER, current_ster);
-        std::string response = nucleo.read_response();
-
-        if (response != "2:ack;;")
-            logger.log(screen_index, LogLevel::WARN, "Nucleo error: " + response);
     }
 }

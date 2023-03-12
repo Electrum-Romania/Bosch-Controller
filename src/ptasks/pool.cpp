@@ -1,4 +1,4 @@
-#include "pool.h"
+#include <ptasks/pool.h>
 
 PtaskPool::PtaskPool()
 {
@@ -10,7 +10,7 @@ PtaskPool::PtaskPool()
 	}
 }
 
-void PtaskPool::worker_loop()
+[[noreturn]] void PtaskPool::worker_loop()
 {
 	for (;;) {
 		std::unique_lock<std::mutex> lock(queue_mutex);
@@ -30,7 +30,7 @@ void PtaskPool::worker_loop()
 	}
 }
 
-void PtaskPool::run_tasks(std::vector<Ptask*> tasks, Pdata* pdata, const Options* opt, std::latch& done)
+void PtaskPool::run_tasks(const std::vector<Ptask*>& tasks, Pdata* pdata, const Options* opt, std::latch& done)
 {
 	{
 		std::unique_lock<std::mutex> lock(queue_mutex);
@@ -49,7 +49,7 @@ void PtaskPool::run_tasks(std::vector<Ptask*> tasks, Pdata* pdata, const Options
 		mutex_condition.notify_one();
 }
 
-void PtaskPool::run_tasks_wait(std::vector<Ptask*> tasks, Pdata* pdata, const Options* opt)
+void PtaskPool::run_tasks_wait(const std::vector<Ptask*>& tasks, Pdata* pdata, const Options* opt)
 {
 	std::latch done{static_cast<std::ptrdiff_t>(tasks.size())};
 

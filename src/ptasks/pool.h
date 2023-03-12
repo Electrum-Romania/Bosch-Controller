@@ -1,8 +1,8 @@
 #ifndef PTASKS_POOL_H
 #define PTASKS_POOL_H
 
-#include "../../controller.h"
-#include "ptask.h"
+#include <controller.h>
+#include <ptasks/ptask.h>
 
 #include <condition_variable>
 #include <latch>
@@ -26,12 +26,12 @@ private:
 
 	std::vector<std::thread> worker_threads;
 
-	void worker_loop();
+    [[noreturn]] void worker_loop();
 public:
 	PtaskPool();
 
-	void run_tasks(std::vector<Ptask*>, Pdata*, const Options*, std::latch&);
-	void run_tasks_wait(std::vector<Ptask*> tasks, Pdata* pdata, const Options* opt);
+	void run_tasks(const std::vector<Ptask*>&, Pdata*, const Options*, std::latch&);
+	void run_tasks_wait(const std::vector<Ptask*>& tasks, Pdata* pdata, const Options* opt);
 };
 
 #endif

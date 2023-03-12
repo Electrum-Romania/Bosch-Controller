@@ -1,17 +1,28 @@
+///
+/// \file serial.h
+/// \brief Serial class
+
 #ifndef UTILS_SERIAL_H
 #define UTILS_SERIAL_H
+
+#include <controller.h>
 
 #include <termios.h>
 #include <unistd.h>
 #include <string>
 
+///
+/// \brief Communication with the nucleo board.
+///
+/// This class handles serial communication with the nucleo board, which is running the Embedded-Platform provided
+/// by the Bosch team.
 class Serial {
 private:
     int fd;
 
     void consume_char(char expected);
 
-    int read_char() const;
+    [[nodiscard]] int read_char() const;
 
     ssize_t raw_write(const void *data, size_t size);
 

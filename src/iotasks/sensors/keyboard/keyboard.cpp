@@ -1,11 +1,7 @@
-//
-// Created by grffn on 2/15/23.
-//
+#include <iotasks/sensors/keyboard/keyboard.h>
 
-#include "keyboard.h"
-
-Keyboard::Keyboard(command_socket &cs)
-    : IOtask("Keyboard", 'k'), pressed_keys({0, 0, 0, 0})
+Keyboard::Keyboard(CommandSocket &cs)
+    : Sensor("Keyboard", 'k'), pressed_keys({0, 0, 0, 0})
 {
     cs.register_command("pressed_key", this, key_pressed_callback_wrapper);
 }
@@ -14,7 +10,7 @@ void Keyboard::key_pressed_callback(const std::string &, const std::string &key)
 {
     std::lock_guard l(mux);
 
-    logger.log(screen_index, LogLevel::INFO, "pressed key " + nclogger::to_string(key.at(0)));
+    log(LogLevel::INFO, "pressed key " + nclogger::to_string(key.at(0)));
 
     switch (key.at(0)) {
         case 'w': pressed_keys.w++; break;
