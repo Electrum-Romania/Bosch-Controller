@@ -1,0 +1,65 @@
+\hypertarget{serial_8h_source}{}\doxysection{serial.\+h}
+\label{serial_8h_source}\index{src/utils/serial/serial.h@{src/utils/serial/serial.h}}
+\mbox{\hyperlink{serial_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 }
+\DoxyCodeLine{4 }
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#ifndef UTILS\_SERIAL\_H}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#define UTILS\_SERIAL\_H}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include <\mbox{\hyperlink{controller_8h}{controller.h}}>}}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#include <termios.h>}}
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include <unistd.h>}}
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{13 }
+\DoxyCodeLine{19 \textcolor{keyword}{class }\mbox{\hyperlink{class_serial}{Serial}} \{}
+\DoxyCodeLine{20 \textcolor{keyword}{private}:}
+\DoxyCodeLine{21     \textcolor{keywordtype}{int} fd;}
+\DoxyCodeLine{22 }
+\DoxyCodeLine{23     \textcolor{keywordtype}{void} consume\_char(\textcolor{keywordtype}{char} expected);}
+\DoxyCodeLine{24 }
+\DoxyCodeLine{25     [[nodiscard]] \textcolor{keywordtype}{int} read\_char() \textcolor{keyword}{const};}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{27     ssize\_t raw\_write(\textcolor{keyword}{const} \textcolor{keywordtype}{void} *data, \textcolor{keywordtype}{size\_t} size);}
+\DoxyCodeLine{28 }
+\DoxyCodeLine{29     \textcolor{keywordtype}{int} screen\_index;}
+\DoxyCodeLine{30 }
+\DoxyCodeLine{31 \textcolor{keyword}{public}:}
+\DoxyCodeLine{32     \textcolor{keyword}{enum class} Command \{}
+\DoxyCodeLine{33         SPED = 1,}
+\DoxyCodeLine{34         STER = 2,}
+\DoxyCodeLine{35         BRAK = 3,}
+\DoxyCodeLine{36         PIDA = 4,}
+\DoxyCodeLine{37         ENPB = 5,}
+\DoxyCodeLine{38         PIDS = 6,}
+\DoxyCodeLine{39         MOVE = 7,}
+\DoxyCodeLine{40     \};}
+\DoxyCodeLine{41 }
+\DoxyCodeLine{42     \textcolor{keyword}{explicit} \mbox{\hyperlink{class_serial}{Serial}}(\textcolor{keyword}{const} \textcolor{keywordtype}{char} *file = \textcolor{stringliteral}{"{}/dev/ttyACM0"{}}, speed\_t baud\_rate = B19200);}
+\DoxyCodeLine{43 }
+\DoxyCodeLine{44     \textcolor{comment}{//ssize\_t write\_command(int command\_number, float arg);}}
+\DoxyCodeLine{45 }
+\DoxyCodeLine{46     \textcolor{comment}{//ssize\_t write\_command(int command\_number, bool arg);}}
+\DoxyCodeLine{47 }
+\DoxyCodeLine{48     ssize\_t write\_command(Command command\_number, ...);}
+\DoxyCodeLine{49 }
+\DoxyCodeLine{50     std::string read\_response();}
+\DoxyCodeLine{51 }
+\DoxyCodeLine{52     std::string read\_line();}
+\DoxyCodeLine{53 \};}
+\DoxyCodeLine{54 }
+\DoxyCodeLine{55 \textcolor{comment}{//}}
+\DoxyCodeLine{56 \textcolor{comment}{// 'Command' : [ [ arg\_list ],                [type\_list],                    [enhanced precision]   ]}}
+\DoxyCodeLine{57 \textcolor{comment}{// 'SPED'    : [ ['f\_vel'],                   [float],                        [False]                ] -\/ Speed command -\/}}
+\DoxyCodeLine{58 \textcolor{comment}{// 'STER'    : [ ['f\_angle'],                 [float],                        [False]                ] -\/ Steer command -\/}}
+\DoxyCodeLine{59 \textcolor{comment}{// 'BRAK'    : [ ['f\_angle' ],                [float],                        [False]                ] -\/ Brake command -\/}}
+\DoxyCodeLine{60 \textcolor{comment}{// 'PIDA'    : [ ['activate' ],               [bool],                         [False]                ] -\/ Activate PID control -\/}}
+\DoxyCodeLine{61 \textcolor{comment}{// 'ENPB'    : [ ['activate' ],               [bool],                         [False]                ] -\/ Activate encoder publisher -\/}}
+\DoxyCodeLine{62 \textcolor{comment}{// 'PIDS'    : [ ['kp', 'ki', 'kd', 'tf' ],   [float, float, float, float],   [True]                 ] -\/ Pass PID values -\/}}
+\DoxyCodeLine{63 \textcolor{comment}{// 'MOVE'    : [ ['distance', 'speed'],       [float, float],                 [True]                 ] -\/ Set distance to travel and the speed -\/}}
+\DoxyCodeLine{64 }
+\DoxyCodeLine{65 }
+\DoxyCodeLine{66 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// UTILS\_SERIAL\_H}}
+
+\end{DoxyCode}

@@ -1,0 +1,40 @@
+\hypertarget{command__socket_8h_source}{}\doxysection{command\+\_\+socket.\+h}
+\label{command__socket_8h_source}\index{src/utils/command\_socket/command\_socket.h@{src/utils/command\_socket/command\_socket.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef UTILS\_COMMAND\_SOCKET\_H}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define UTILS\_COMMAND\_SOCKET\_H}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include <\mbox{\hyperlink{controller_8h}{controller.h}}>}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include <unordered\_map>}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include <thread>}}
+\DoxyCodeLine{8 }
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#include <utils/command\_socket/line\_reader.h>}}
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#include <\mbox{\hyperlink{loggable_8h}{utils/loggable/loggable.h}}>}}
+\DoxyCodeLine{11 }
+\DoxyCodeLine{12 \textcolor{keyword}{typedef} void (*CommandCallback) (\textcolor{keywordtype}{void} *, \textcolor{keyword}{const} std::string\&, \textcolor{keyword}{const} std::string\&);}
+\DoxyCodeLine{13 }
+\DoxyCodeLine{14 \textcolor{keyword}{class }\mbox{\hyperlink{class_command_socket}{CommandSocket}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_loggable}{Loggable}} \{}
+\DoxyCodeLine{15 \textcolor{keyword}{private}:}
+\DoxyCodeLine{16     \textcolor{keyword}{struct }Command \{}
+\DoxyCodeLine{17         \textcolor{keywordtype}{void} *object;}
+\DoxyCodeLine{18         CommandCallback callback;}
+\DoxyCodeLine{19     \};}
+\DoxyCodeLine{20 }
+\DoxyCodeLine{21     \textcolor{keywordtype}{bool} dead = \textcolor{keyword}{false};}
+\DoxyCodeLine{22     \mbox{\hyperlink{class_line_reader}{LineReader}} conn;}
+\DoxyCodeLine{23     std::thread thread;}
+\DoxyCodeLine{24 }
+\DoxyCodeLine{25     std::unordered\_map<std::string, Command> commands;}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{27 \textcolor{keyword}{public}:}
+\DoxyCodeLine{28     \mbox{\hyperlink{class_command_socket}{CommandSocket}}(\textcolor{keyword}{const} std::string\& host, uint16\_t port);}
+\DoxyCodeLine{29 }
+\DoxyCodeLine{30     \textcolor{keywordtype}{void} run();}
+\DoxyCodeLine{31     \textcolor{keywordtype}{void} register\_command(\textcolor{keyword}{const} std::string \&cname, \textcolor{keywordtype}{void} *\textcolor{keywordtype}{object}, CommandCallback f);}
+\DoxyCodeLine{32 \};}
+\DoxyCodeLine{33 }
+\DoxyCodeLine{34 \textcolor{preprocessor}{\#endif }\textcolor{comment}{//UTILS\_COMMAND\_SOCKET\_H}}
+
+\end{DoxyCode}

@@ -1,0 +1,35 @@
+\hypertarget{options__manager_8h_source}{}\doxysection{options\+\_\+manager.\+h}
+\label{options__manager_8h_source}\index{src/utils/options\_manager/options\_manager.h@{src/utils/options\_manager/options\_manager.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef OPTIONS\_MANAGER\_H}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define OPTIONS\_MANAGER\_H}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include <\mbox{\hyperlink{controller_8h}{controller.h}}>}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include <shared\_mutex>}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include <utils/command\_socket/command\_socket.h>}}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10 \textcolor{keyword}{class }\mbox{\hyperlink{class_options_manager}{OptionsManager}} \{}
+\DoxyCodeLine{11 \textcolor{keyword}{private}:}
+\DoxyCodeLine{12     \mbox{\hyperlink{struct_options}{Options}}* def;}
+\DoxyCodeLine{13     \mbox{\hyperlink{struct_options}{Options}}* current;}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{15     std::mutex mux;}
+\DoxyCodeLine{16 }
+\DoxyCodeLine{17     \textcolor{keyword}{static} \mbox{\hyperlink{struct_options}{Options}}* get\_defs();}
+\DoxyCodeLine{18 }
+\DoxyCodeLine{19 \textcolor{keyword}{public}:}
+\DoxyCodeLine{20     \textcolor{keyword}{explicit} \mbox{\hyperlink{class_options_manager}{OptionsManager}}(\mbox{\hyperlink{class_command_socket}{CommandSocket}} \&cs);}
+\DoxyCodeLine{21     \mbox{\hyperlink{class_options_manager}{\string~OptionsManager}}();}
+\DoxyCodeLine{22 }
+\DoxyCodeLine{23     \textcolor{keywordtype}{void} parse\_new\_option(\textcolor{keyword}{const} std::string\& command, \textcolor{keyword}{const} std::string\& arg);}
+\DoxyCodeLine{24     \textcolor{keyword}{static} \textcolor{keywordtype}{void} parse\_new\_option\_wrapper(\textcolor{keywordtype}{void} *t, \textcolor{keyword}{const} std::string\& command, \textcolor{keyword}{const} std::string\& arg);}
+\DoxyCodeLine{25 }
+\DoxyCodeLine{26     \mbox{\hyperlink{struct_options}{Options}}* get\_options();}
+\DoxyCodeLine{27 \};}
+\DoxyCodeLine{28 }
+\DoxyCodeLine{29 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

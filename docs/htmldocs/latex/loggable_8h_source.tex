@@ -1,0 +1,46 @@
+\hypertarget{loggable_8h_source}{}\doxysection{loggable.\+h}
+\label{loggable_8h_source}\index{src/utils/loggable/loggable.h@{src/utils/loggable/loggable.h}}
+\mbox{\hyperlink{loggable_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 }
+\DoxyCodeLine{4 }
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#ifndef UTILS\_LOGGABLE\_H}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#define UTILS\_LOGGABLE\_H}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include <\mbox{\hyperlink{controller_8h}{controller.h}}>}}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#include <unordered\_map>}}
+\DoxyCodeLine{11 }
+\DoxyCodeLine{67 \textcolor{keyword}{class }\mbox{\hyperlink{class_loggable}{Loggable}} \{}
+\DoxyCodeLine{68 \textcolor{keyword}{public}:}
+\DoxyCodeLine{73     \textcolor{keyword}{struct }\mbox{\hyperlink{struct_loggable_1_1_watch_pair}{WatchPair}} \{}
+\DoxyCodeLine{78         \textcolor{keywordtype}{int} \mbox{\hyperlink{struct_loggable_1_1_watch_pair_a134a036bdb0ae848058b9a4b3f518f86}{i}};}
+\DoxyCodeLine{79 }
+\DoxyCodeLine{84         std::string \mbox{\hyperlink{struct_loggable_1_1_watch_pair_abbc64cb6f5f0261ecb75e21cf084db63}{name}};}
+\DoxyCodeLine{85 }
+\DoxyCodeLine{92         \textcolor{keywordtype}{int} \mbox{\hyperlink{struct_loggable_1_1_watch_pair_af8e663b9ce8285abba8060e29abeb9c8}{width}};}
+\DoxyCodeLine{93     \};}
+\DoxyCodeLine{94 }
+\DoxyCodeLine{95 \textcolor{keyword}{private}:}
+\DoxyCodeLine{96     \textcolor{keywordtype}{int} screen\_index;}
+\DoxyCodeLine{97     \textcolor{keywordtype}{int} watch\_index;}
+\DoxyCodeLine{98 }
+\DoxyCodeLine{99     std::unordered\_map<int, int> watch\_index\_map;}
+\DoxyCodeLine{100     std::unordered\_map<int, int> watch\_width\_map;}
+\DoxyCodeLine{101 }
+\DoxyCodeLine{102 \textcolor{keyword}{protected}:}
+\DoxyCodeLine{109     \mbox{\hyperlink{class_loggable_a0248e6badc571b0102e57d8807a75cd5}{Loggable}}(std::string name, \textcolor{keywordtype}{int} key, \textcolor{keyword}{const} std::vector<WatchPair>\& wp = \{\});}
+\DoxyCodeLine{110 }
+\DoxyCodeLine{116     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_loggable_a457d68ba1dcc70c6f9880bc4ddf614c0}{log}}(LogLevel log\_level, std::string message) \textcolor{keyword}{const};}
+\DoxyCodeLine{117 }
+\DoxyCodeLine{123     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_loggable_a790ae92fc3ef4656c108dfb6092e2560}{set\_watch\_value}}(\textcolor{keywordtype}{int} i, std::string value);}
+\DoxyCodeLine{124 }
+\DoxyCodeLine{133     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_loggable_a790ae92fc3ef4656c108dfb6092e2560}{set\_watch\_value}}(\textcolor{keywordtype}{int} i, \textcolor{keywordtype}{double} d, \textcolor{keywordtype}{int} precision = 2);}
+\DoxyCodeLine{134 }
+\DoxyCodeLine{143     \textcolor{keyword}{template}<\textcolor{keyword}{typename} T>}
+\DoxyCodeLine{144     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_loggable_a790ae92fc3ef4656c108dfb6092e2560}{set\_watch\_value}}(\textcolor{keywordtype}{int} i, T value, \textcolor{keywordtype}{void} (*callback)(std::stringstream\& ss) = \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{145 \};}
+\DoxyCodeLine{146 }
+\DoxyCodeLine{147 \textcolor{preprocessor}{\#endif }\textcolor{comment}{//UTILS\_LOGGABLE\_H}}
+
+\end{DoxyCode}

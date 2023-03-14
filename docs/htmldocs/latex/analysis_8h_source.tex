@@ -1,0 +1,21 @@
+\hypertarget{analysis_8h_source}{}\doxysection{analysis.\+h}
+\label{analysis_8h_source}\index{src/ptasks/analysis/analysis.h@{src/ptasks/analysis/analysis.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef PTASKS\_ANALYSIS\_H}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define PTASKS\_ANALYSIS\_H}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include <opencv2/opencv.hpp>}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include <ptasks/ptask.h>}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{keyword}{class }\mbox{\hyperlink{class_analysis}{Analysis}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_ptask}{Ptask}} \{}
+\DoxyCodeLine{9 \textcolor{keyword}{public}:}
+\DoxyCodeLine{10     \mbox{\hyperlink{class_analysis}{Analysis}}();}
+\DoxyCodeLine{11     \textcolor{keyword}{static} \textcolor{keywordtype}{void} create\_analysis(\mbox{\hyperlink{struct_pdata}{Pdata}}*, \textcolor{keyword}{const} \mbox{\hyperlink{struct_options}{Options}}*, cv::Mat\&, \textcolor{keyword}{const} std::string\&);}
+\DoxyCodeLine{12     \textcolor{keywordtype}{void} compute(\mbox{\hyperlink{struct_pdata}{Pdata}}*, \textcolor{keyword}{const} \mbox{\hyperlink{struct_options}{Options}}*) \textcolor{keyword}{override};}
+\DoxyCodeLine{13 \};}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

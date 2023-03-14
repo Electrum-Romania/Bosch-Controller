@@ -1,0 +1,68 @@
+\hypertarget{struct_loggable_1_1_watch_pair}{}\doxysection{Loggable\+::Watch\+Pair Struct Reference}
+\label{struct_loggable_1_1_watch_pair}\index{Loggable::WatchPair@{Loggable::WatchPair}}
+
+
+Description of a watch value.  
+
+
+
+
+{\ttfamily \#include $<$loggable.\+h$>$}
+
+
+
+Collaboration diagram for Loggable\+::Watch\+Pair\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=195pt]{struct_loggable_1_1_watch_pair__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{struct_loggable_1_1_watch_pair_a134a036bdb0ae848058b9a4b3f518f86}{i}}
+\begin{DoxyCompactList}\small\item\em Value index later used in \mbox{\hyperlink{class_loggable_a790ae92fc3ef4656c108dfb6092e2560}{Loggable\+::set\+\_\+watch\+\_\+value()}}. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{struct_loggable_1_1_watch_pair_abbc64cb6f5f0261ecb75e21cf084db63}{name}}
+\begin{DoxyCompactList}\small\item\em The name of the value. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{struct_loggable_1_1_watch_pair_af8e663b9ce8285abba8060e29abeb9c8}{width}}
+\begin{DoxyCompactList}\small\item\em The width of the value. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Description of a watch value. 
+
+See the example code in the \mbox{\hyperlink{class_loggable}{Loggable}} detailed description for more information on how this is used. 
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{struct_loggable_1_1_watch_pair_a134a036bdb0ae848058b9a4b3f518f86}\label{struct_loggable_1_1_watch_pair_a134a036bdb0ae848058b9a4b3f518f86}} 
+\index{Loggable::WatchPair@{Loggable::WatchPair}!i@{i}}
+\index{i@{i}!Loggable::WatchPair@{Loggable::WatchPair}}
+\doxysubsubsection{\texorpdfstring{i}{i}}
+{\footnotesize\ttfamily int Loggable\+::\+Watch\+Pair\+::i}
+
+
+
+Value index later used in \mbox{\hyperlink{class_loggable_a790ae92fc3ef4656c108dfb6092e2560}{Loggable\+::set\+\_\+watch\+\_\+value()}}. 
+
+See the example code in the \mbox{\hyperlink{class_loggable}{Loggable}} detailed description for more information on how this is used. \mbox{\Hypertarget{struct_loggable_1_1_watch_pair_abbc64cb6f5f0261ecb75e21cf084db63}\label{struct_loggable_1_1_watch_pair_abbc64cb6f5f0261ecb75e21cf084db63}} 
+\index{Loggable::WatchPair@{Loggable::WatchPair}!name@{name}}
+\index{name@{name}!Loggable::WatchPair@{Loggable::WatchPair}}
+\doxysubsubsection{\texorpdfstring{name}{name}}
+{\footnotesize\ttfamily std\+::string Loggable\+::\+Watch\+Pair\+::name}
+
+
+
+The name of the value. 
+
+This is shown on the screen to the user. \mbox{\Hypertarget{struct_loggable_1_1_watch_pair_af8e663b9ce8285abba8060e29abeb9c8}\label{struct_loggable_1_1_watch_pair_af8e663b9ce8285abba8060e29abeb9c8}} 
+\index{Loggable::WatchPair@{Loggable::WatchPair}!width@{width}}
+\index{width@{width}!Loggable::WatchPair@{Loggable::WatchPair}}
+\doxysubsubsection{\texorpdfstring{width}{width}}
+{\footnotesize\ttfamily int Loggable\+::\+Watch\+Pair\+::width}
+
+
+
+The width of the value. 
+
+This is how much space will be reserved on the screen for this value. If the provided string value is smaller than the width, it will be right-\/aligned. If it is smaller, the first width characters will be shown and the rest will be truncated. 

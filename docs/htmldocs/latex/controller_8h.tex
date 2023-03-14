@@ -1,0 +1,60 @@
+\hypertarget{controller_8h}{}\doxysection{src/controller.h File Reference}
+\label{controller_8h}\index{src/controller.h@{src/controller.h}}
+
+
+Main concepts used everywhere in the application.  
+
+
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_pressed_keys}{Pressed\+Keys}}
+\begin{DoxyCompactList}\small\item\em Keys pressed on the keyboard. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{controller_8h_a549a0c1cc47933fa045b200690965cbd}{sched}} ()
+\begin{DoxyCompactList}\small\item\em Main program loop. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Main concepts used everywhere in the application. 
+
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{struct_pdata}{Pdata}}, \mbox{\hyperlink{struct_options}{Options}} 
+\end{DoxySeeAlso}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{controller_8h_a549a0c1cc47933fa045b200690965cbd}\label{controller_8h_a549a0c1cc47933fa045b200690965cbd}} 
+\index{controller.h@{controller.h}!sched@{sched}}
+\index{sched@{sched}!controller.h@{controller.h}}
+\doxysubsubsection{\texorpdfstring{sched()}{sched()}}
+{\footnotesize\ttfamily void sched (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Main program loop. 
+
+This function runs continuously, processing frame. The process is as follows\+:
+
+
+\begin{DoxyEnumerate}
+\item Get current \mbox{\hyperlink{struct_options}{Options}}.
+\item Await for all sensors to give available data.
+\item Run layer 1 patsks in parallel. Await for all of them to complete.
+\item Run layer 2 ptasks in parallel. Await for all of them to complete. (and so on for other layers)
+\item Await for sinks to finish sending the {\itshape previous} frame. Then, asynchronously give them access to the current frame data.
+\end{DoxyEnumerate}
+
+Sensors are\+: \mbox{\hyperlink{class_camera}{Camera}}, \mbox{\hyperlink{class_keyboard}{Keyboard}}.
+
+Layer 1 ptasks are\+: \mbox{\hyperlink{class_lane_detection}{Lane\+Detection}}.
+
+Layer 2 ptasks are\+: \mbox{\hyperlink{class_analysis}{Analysis}}, \mbox{\hyperlink{class_control}{Control}}.
+
+Sinks are\+: \mbox{\hyperlink{class_motors}{Motors}}, \mbox{\hyperlink{class_web_feed}{Web\+Feed}}.
+
+\begin{DoxySeeAlso}{See also}
+structure, \mbox{\hyperlink{class_i_otask}{IOtask}}, \mbox{\hyperlink{class_ptask}{Ptask}} 
+\end{DoxySeeAlso}

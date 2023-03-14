@@ -1,0 +1,24 @@
+\hypertarget{window__feed_8h_source}{}\doxysection{window\+\_\+feed.\+h}
+\label{window__feed_8h_source}\index{/home/grffn/work/bosch/controller/src/iotasks/sinks/window\_feed/window\_feed.h@{/home/grffn/work/bosch/controller/src/iotasks/sinks/window\_feed/window\_feed.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef IOTASKS\_SINKS\_WINDOW\_FEED\_H}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define IOTASKS\_SINKS\_WINDOW\_FEED\_H}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include "{}../../iotask.h"{}}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include <opencv2/opencv.hpp>}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{keyword}{class }\mbox{\hyperlink{class_window_feed}{WindowFeed}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_i_otask}{IOtask}} \{}
+\DoxyCodeLine{9 \textcolor{keyword}{private}:}
+\DoxyCodeLine{10     cv::String window\_name;}
+\DoxyCodeLine{11 }
+\DoxyCodeLine{12 \textcolor{keyword}{public}:}
+\DoxyCodeLine{13     \mbox{\hyperlink{class_window_feed}{WindowFeed}}(\textcolor{keyword}{const} \textcolor{keywordtype}{char} *);}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{15     \textcolor{keywordtype}{void} compute\_frame() \textcolor{keyword}{override};}
+\DoxyCodeLine{16 \};}
+\DoxyCodeLine{17 }
+\DoxyCodeLine{18 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

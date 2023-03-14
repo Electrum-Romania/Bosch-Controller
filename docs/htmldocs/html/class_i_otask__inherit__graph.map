@@ -1,0 +1,10 @@
+<map id="IOtask" name="IOtask">
+<area shape="rect" id="node1" title="Base class for input/output tasks." alt="" coords="162,80,226,107"/>
+<area shape="rect" id="node3" href="$class_sensor.html" title="Base class for input tasks." alt="" coords="111,155,178,181"/>
+<area shape="rect" id="node6" href="$class_sink.html" title="Base class for output tasks." alt="" coords="218,155,269,181"/>
+<area shape="rect" id="node2" href="$class_loggable.html" title="Base class for logging classes." alt="" coords="153,5,235,32"/>
+<area shape="rect" id="node4" href="$class_camera.html" title=" " alt="" coords="5,229,79,256"/>
+<area shape="rect" id="node5" href="$class_keyboard.html" title=" " alt="" coords="103,229,186,256"/>
+<area shape="rect" id="node7" href="$class_motors.html" title=" " alt="" coords="210,229,277,256"/>
+<area shape="rect" id="node8" href="$class_web_feed.html" title=" " alt="" coords="301,229,383,256"/>
+</map>

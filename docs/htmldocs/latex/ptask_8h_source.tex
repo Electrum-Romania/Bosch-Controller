@@ -1,0 +1,34 @@
+\hypertarget{ptask_8h_source}{}\doxysection{ptask.\+h}
+\label{ptask_8h_source}\index{src/ptasks/ptask.h@{src/ptasks/ptask.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef PTASKS\_PTASK\_H}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define PTASKS\_PTASK\_H}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include <\mbox{\hyperlink{controller_8h}{controller.h}}>}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include <\mbox{\hyperlink{loggable_8h}{utils/loggable/loggable.h}}>}}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10 \textcolor{keyword}{class }\mbox{\hyperlink{class_ptask}{Ptask}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_loggable}{Loggable}} \{}
+\DoxyCodeLine{11 \textcolor{keyword}{private}:}
+\DoxyCodeLine{12     std::string name;}
+\DoxyCodeLine{13 }
+\DoxyCodeLine{14     \textcolor{keyword}{static} \textcolor{keywordtype}{int} timings\_screen;}
+\DoxyCodeLine{15     \textcolor{keyword}{static} std::unordered\_map<std::string, int> title\_to\_watch\_value;}
+\DoxyCodeLine{16 }
+\DoxyCodeLine{17 \textcolor{keyword}{public}:}
+\DoxyCodeLine{18     \textcolor{keyword}{explicit} \mbox{\hyperlink{class_ptask}{Ptask}}(std::string name, \textcolor{keywordtype}{int} key, std::vector<Loggable::WatchPair> wp = \{\});}
+\DoxyCodeLine{19 }
+\DoxyCodeLine{20     \mbox{\hyperlink{class_ptask}{\string~Ptask}}();}
+\DoxyCodeLine{21 }
+\DoxyCodeLine{22     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} compute(\mbox{\hyperlink{struct_pdata}{Pdata}}*, \textcolor{keyword}{const} \mbox{\hyperlink{struct_options}{Options}}*) = 0;}
+\DoxyCodeLine{23     \textcolor{keywordtype}{void} run(\mbox{\hyperlink{struct_pdata}{Pdata}}*, \textcolor{keyword}{const} \mbox{\hyperlink{struct_options}{Options}}*);}
+\DoxyCodeLine{24 }
+\DoxyCodeLine{25     \textcolor{keyword}{static} \textcolor{keywordtype}{void} print\_timings(\mbox{\hyperlink{struct_pdata}{Pdata}}*, int64\_t);}
+\DoxyCodeLine{26 \};}
+\DoxyCodeLine{27 }
+\DoxyCodeLine{28 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

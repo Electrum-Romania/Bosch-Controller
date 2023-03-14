@@ -1,0 +1,149 @@
+\label{md_docs_building_building}%
+\Hypertarget{md_docs_building_building}%
+\hypertarget{md_docs_building_autotoc_md0}{}\doxysection{Setting up the enviornment}\label{md_docs_building_autotoc_md0}
+The following instructions describe the instructions to build {\ttfamily controller} on a Raspberry Pi, assuming a Raspberry Pi OS installation.
+
+First, make sure your system is up-\/to-\/date and install the necessary packages from the repo.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{sudo apt update}
+\DoxyCodeLine{sudo apt upgrade}
+\DoxyCodeLine{}
+\DoxyCodeLine{sudo apt install build-\/essential cmake git python3 wget}
+
+\end{DoxyCode}
+
+
+Because our scheduler uses the C++20 {\ttfamily \texorpdfstring{$<$}{<}latch\texorpdfstring{$>$}{>}} feature, which is not implemented in the older version of {\ttfamily GCC} offered by Raspberry Pi OS, we will have to grab a portable compiler environment. Run the following commands in the directory in which you wish to install this environment ({\ttfamily \$\+HOME}, {\ttfamily /opt}, {\ttfamily \$\+HOME/opt}) are good choices.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\# Grab the environment}
+\DoxyCodeLine{}
+\DoxyCodeLine{wget http://musl.cc/armv7l-\/linux-\/musleabihf-\/native.tgz}
+\DoxyCodeLine{}
+\DoxyCodeLine{\# Unpack the environment}
+\DoxyCodeLine{}
+\DoxyCodeLine{tar xvfz armv7l-\/linux-\/musleabihf-\/native.tgz}
+\DoxyCodeLine{}
+\DoxyCodeLine{\# Set environment variables for future use}
+\DoxyCodeLine{}
+\DoxyCodeLine{export MOBILE\_PREFIX\_PATH="{}\$PWD/armv7l-\/linux-\/musleabihf-\/native"{}}
+\DoxyCodeLine{}
+\DoxyCodeLine{echo "{}export MOBILE\_PREFIX\_PATH=\(\backslash\)"{}\$MOBILE\_PREFIX\_PATH\(\backslash\)"{}"{} >> "{}\$HOME/.profile"{}}
+\DoxyCodeLine{echo 'export MOBILE\_CC="{}\$MOBILE\_PREFIX\_PATH/bin/gcc"{}' >> "{}\$HOME/.profile"{}}
+\DoxyCodeLine{echo 'export MOBILE\_CXX="{}\$MOBILE\_PREFIX\_PATH/bin/g++"{}' >> "{}\$HOME/.profile"{}}
+\DoxyCodeLine{echo 'export MOBILE\_LD\_PATH="{}\$MOBILE\_PREFIX\_PATH/lib"{}' >> "{}\$HOME/.profile"{}}
+
+\end{DoxyCode}
+
+
+\begin{DoxyNote}{Note}
+You should now reset your system (or log out and log back in) for the environment variables to take effect.
+\end{DoxyNote}
+\hypertarget{md_docs_building_autotoc_md1}{}\doxysection{Building and installing dependencies}\label{md_docs_building_autotoc_md1}
+\hypertarget{md_docs_building_autotoc_md2}{}\doxysubsection{Open\+CV}\label{md_docs_building_autotoc_md2}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\# Grab the source code}
+\DoxyCodeLine{}
+\DoxyCodeLine{wget -\/O opencv.zip https://github.com/opencv/opencv/archive/4.x.zip}
+\DoxyCodeLine{wget -\/O opencv\_contrib.zip https://github.com/opencv/opencv\_contrib/archive/4.x.zip}
+\DoxyCodeLine{}
+\DoxyCodeLine{\# Unpack the source code}
+\DoxyCodeLine{}
+\DoxyCodeLine{unzip opencv.zip}
+\DoxyCodeLine{unzip opencv\_contrib.zip}
+\DoxyCodeLine{}
+\DoxyCodeLine{\# Create build directory and switch into it}
+\DoxyCodeLine{}
+\DoxyCodeLine{mkdir -\/p build-\/opencv \&\& cd build-\/opencv}
+\DoxyCodeLine{}
+\DoxyCodeLine{\# Configure}
+\DoxyCodeLine{}
+\DoxyCodeLine{CC="{}\$MOBILE\_CC"{} CXX="{}\$MOBILE\_CXX"{} cmake -\/DOPENCV\_EXTRA\_MODULES\_PATH=../opencv\_contrib-\/4.x/modules ../opencv-\/4.x}
+\DoxyCodeLine{}
+\DoxyCodeLine{\# Build}
+\DoxyCodeLine{}
+\DoxyCodeLine{cmake -\/-\/build .}
+\DoxyCodeLine{}
+\DoxyCodeLine{\# Install}
+\DoxyCodeLine{}
+\DoxyCodeLine{cmake -\/-\/install . -\/-\/prefix "{}\$MOBILE\_PREFIX\_PATH"{}}
+
+\end{DoxyCode}
+\hypertarget{md_docs_building_autotoc_md3}{}\doxysubsection{sockpp}\label{md_docs_building_autotoc_md3}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{wget -\/O sockpp.tar.gz https://github.com/fpagliughi/sockpp/archive/refs/tags/v0.8.1.tar.gz}
+\DoxyCodeLine{tar xvfz sockpp.tar.gz \&\& mv sockpp-\/0.8.1 sockpp}
+\DoxyCodeLine{}
+\DoxyCodeLine{\# Create build directory and switch into it}
+\DoxyCodeLine{}
+\DoxyCodeLine{mkdir sockpp/build \&\& cd sockpp/build}
+\DoxyCodeLine{}
+\DoxyCodeLine{\# Configure}
+\DoxyCodeLine{}
+\DoxyCodeLine{CC="{}\$MOBILE\_CC"{} CXX="{}\$MOBILE\_CXX"{} cmake ..}
+\DoxyCodeLine{}
+\DoxyCodeLine{\# Build}
+\DoxyCodeLine{}
+\DoxyCodeLine{cmake -\/-\/build .}
+\DoxyCodeLine{}
+\DoxyCodeLine{\# Install}
+\DoxyCodeLine{}
+\DoxyCodeLine{cmake -\/-\/install . -\/-\/prefix "{}\$MOBILE\_PREFIX\_PATH"{}}
+
+\end{DoxyCode}
+\hypertarget{md_docs_building_autotoc_md4}{}\doxysection{Building controller}\label{md_docs_building_autotoc_md4}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{git clone -\/-\/recurse-\/submodules https://github.com/Electrum-\/Romania/Bosch-\/Controller}
+\DoxyCodeLine{cd Bosch-\/Controller}
+\DoxyCodeLine{}
+\DoxyCodeLine{\# Generate headers}
+\DoxyCodeLine{}
+\DoxyCodeLine{cd src}
+\DoxyCodeLine{python3 ./generate\_options.py}
+\DoxyCodeLine{cd ..}
+\DoxyCodeLine{}
+\DoxyCodeLine{\# Configure}
+\DoxyCodeLine{}
+\DoxyCodeLine{mkdir build \&\& cd build}
+\DoxyCodeLine{CC="{}\$MOBILE\_CC"{} CXX=\$MOBILE\_CXX"{} cmake ..}
+\DoxyCodeLine{}
+\DoxyCodeLine{\# Build}
+\DoxyCodeLine{}
+\DoxyCodeLine{cmake -\/-\/build .}
+
+\end{DoxyCode}
+\hypertarget{md_docs_building_autotoc_md5}{}\doxysection{Compilation options}\label{md_docs_building_autotoc_md5}
+The controller program has a number of compile-\/time configuration options you may wish to change. This can be done when running the {\ttfamily generate\+\_\+options.\+py} script. For example to change the address and port of the command socket you can run the script as follows\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{python3 ./generate\_options.py -\/D command\_socket\_host=\(\backslash\)"{}192.168.0.25\(\backslash\)"{} -\/D command\_socket\_port=3003}
+
+\end{DoxyCode}
+
+
+\begin{DoxyNote}{Note}
+The double-\/quotes of string parameters should be escaped in the shell, like above.
+\end{DoxyNote}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{struct_static_options}{Static\+Options}}
+\end{DoxySeeAlso}
+\hypertarget{md_docs_building_autotoc_md6}{}\doxysection{Running controller}\label{md_docs_building_autotoc_md6}
+To run the controller issue the following command in the build directory\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{LD\_LIBRARY\_PATH="{}\$MOBILE\_LD\_PATH"{} ./controller}
+
+\end{DoxyCode}
+
+
+\begin{DoxyWarning}{Warning}
+Running the executable normally will lead to dynamic linking errors. 
+\end{DoxyWarning}

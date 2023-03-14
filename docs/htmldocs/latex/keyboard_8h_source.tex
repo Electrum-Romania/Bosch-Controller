@@ -1,0 +1,31 @@
+\hypertarget{keyboard_8h_source}{}\doxysection{keyboard.\+h}
+\label{keyboard_8h_source}\index{src/iotasks/sensors/keyboard/keyboard.h@{src/iotasks/sensors/keyboard/keyboard.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef CONTROLLERPROJECT\_KEYBOARD\_H}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define CONTROLLERPROJECT\_KEYBOARD\_H}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include <\mbox{\hyperlink{controller_8h}{controller.h}}>}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include <\mbox{\hyperlink{sensor_8h}{iotasks/sensors/sensor.h}}>}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include <utils/command\_socket/command\_socket.h>}}
+\DoxyCodeLine{8 }
+\DoxyCodeLine{9 \textcolor{keyword}{class }\mbox{\hyperlink{class_keyboard}{Keyboard}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_sensor}{Sensor}} \{}
+\DoxyCodeLine{10 \textcolor{keyword}{private}:}
+\DoxyCodeLine{11     std::mutex mux;}
+\DoxyCodeLine{12     \mbox{\hyperlink{struct_pressed_keys}{PressedKeys}} pressed\_keys;}
+\DoxyCodeLine{13 }
+\DoxyCodeLine{14 \textcolor{keyword}{public}:}
+\DoxyCodeLine{15     \textcolor{keyword}{explicit} \mbox{\hyperlink{class_keyboard}{Keyboard}}(\mbox{\hyperlink{class_command_socket}{CommandSocket}} \&cs);}
+\DoxyCodeLine{16     \mbox{\hyperlink{class_keyboard}{\string~Keyboard}}() \textcolor{keyword}{override};}
+\DoxyCodeLine{17 }
+\DoxyCodeLine{18     \textcolor{keywordtype}{void} compute\_frame() \textcolor{keyword}{override};}
+\DoxyCodeLine{19 }
+\DoxyCodeLine{20     \textcolor{keywordtype}{void} key\_pressed\_callback(\textcolor{keyword}{const} std::string\&, \textcolor{keyword}{const} std::string\& key);}
+\DoxyCodeLine{21     \textcolor{keyword}{static} \textcolor{keywordtype}{void} key\_pressed\_callback\_wrapper(\textcolor{keywordtype}{void} *t, \textcolor{keyword}{const} std::string\&, \textcolor{keyword}{const} std::string\& key);}
+\DoxyCodeLine{22 \};}
+\DoxyCodeLine{23 }
+\DoxyCodeLine{24 }
+\DoxyCodeLine{25 \textcolor{preprocessor}{\#endif }\textcolor{comment}{//CONTROLLERPROJECT\_KEYBOARD\_H}}
+
+\end{DoxyCode}

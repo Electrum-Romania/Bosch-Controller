@@ -1,0 +1,32 @@
+\hypertarget{web__feed_8h_source}{}\doxysection{web\+\_\+feed.\+h}
+\label{web__feed_8h_source}\index{src/iotasks/sinks/web\_feed/web\_feed.h@{src/iotasks/sinks/web\_feed/web\_feed.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef IOTASKS\_SINKS\_WEBFEED\_H}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define IOTASKS\_SINKS\_WEBFEED\_H}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include <\mbox{\hyperlink{sink_8h}{iotasks/sinks/sink.h}}>}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include <sockpp/tcp\_connector.h>}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include <opencv2/opencv.hpp>}}
+\DoxyCodeLine{8 }
+\DoxyCodeLine{9 \textcolor{keyword}{class }\mbox{\hyperlink{class_web_feed}{WebFeed}} final : \textcolor{keyword}{public} \mbox{\hyperlink{class_sink}{Sink}} \{}
+\DoxyCodeLine{10 \textcolor{keyword}{private}:}
+\DoxyCodeLine{11     sockpp::tcp\_connector camera\_conn;}
+\DoxyCodeLine{12     sockpp::tcp\_connector analysis\_conn;}
+\DoxyCodeLine{13 }
+\DoxyCodeLine{14     \textcolor{keywordtype}{bool} dead;}
+\DoxyCodeLine{15 }
+\DoxyCodeLine{16     \textcolor{keywordtype}{void} write\_jpeg\_to\_connection(std::vector<unsigned char>\& jpeg, sockpp::tcp\_connector\& connector);}
+\DoxyCodeLine{17     \textcolor{keywordtype}{void} write\_image\_to\_connection(cv::Mat\& image, sockpp::tcp\_connector\& conn);}
+\DoxyCodeLine{18     }
+\DoxyCodeLine{19 \textcolor{keyword}{public}:}
+\DoxyCodeLine{20     \mbox{\hyperlink{class_web_feed}{WebFeed}}(\textcolor{keyword}{const} std::string\& host, uint16\_t camera\_port, uint16\_t analysis\_port);}
+\DoxyCodeLine{21     \mbox{\hyperlink{class_web_feed}{\string~WebFeed}}() \textcolor{keyword}{final} = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{22 }
+\DoxyCodeLine{23     \textcolor{keywordtype}{void} compute\_frame() \textcolor{keyword}{final};}
+\DoxyCodeLine{24 \};}
+\DoxyCodeLine{25 }
+\DoxyCodeLine{26 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

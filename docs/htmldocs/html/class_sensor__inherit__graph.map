@@ -1,0 +1,7 @@
+<map id="Sensor" name="Sensor">
+<area shape="rect" id="node1" title="Base class for input tasks." alt="" coords="59,155,126,181"/>
+<area shape="rect" id="node4" href="$class_camera.html" title=" " alt="" coords="5,229,79,256"/>
+<area shape="rect" id="node5" href="$class_keyboard.html" title=" " alt="" coords="103,229,186,256"/>
+<area shape="rect" id="node2" href="$class_i_otask.html" title="Base class for input/output tasks." alt="" coords="61,80,125,107"/>
+<area shape="rect" id="node3" href="$class_loggable.html" title="Base class for logging classes." alt="" coords="52,5,133,32"/>
+</map>

@@ -1,0 +1,28 @@
+\hypertarget{camera_8h_source}{}\doxysection{camera.\+h}
+\label{camera_8h_source}\index{src/iotasks/sensors/camera/camera.h@{src/iotasks/sensors/camera/camera.h}}
+\mbox{\hyperlink{camera_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 }
+\DoxyCodeLine{4 }
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#ifndef IOTASKS\_SENSORS\_CAMERA\_H}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#define IOTASKS\_SENSORS\_CAMERA\_H}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include <\mbox{\hyperlink{sensor_8h}{iotasks/sensors/sensor.h}}>}}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#include <opencv2/opencv.hpp>}}
+\DoxyCodeLine{11 }
+\DoxyCodeLine{15 \textcolor{keyword}{class }\mbox{\hyperlink{class_camera}{Camera}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_sensor}{Sensor}} \{}
+\DoxyCodeLine{16 \textcolor{keyword}{private}:}
+\DoxyCodeLine{17 \textcolor{comment}{//  cv::Mat          image;}}
+\DoxyCodeLine{18     cv::VideoCapture camera;}
+\DoxyCodeLine{19     }
+\DoxyCodeLine{20 \textcolor{keyword}{public}:}
+\DoxyCodeLine{21     \mbox{\hyperlink{class_camera}{Camera}}();}
+\DoxyCodeLine{22     \mbox{\hyperlink{class_camera}{\string~Camera}}() \textcolor{keyword}{override};}
+\DoxyCodeLine{23 }
+\DoxyCodeLine{24     \textcolor{keywordtype}{void} compute\_frame() \textcolor{keyword}{override};}
+\DoxyCodeLine{25 \};}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{27 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

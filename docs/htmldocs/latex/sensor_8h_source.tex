@@ -1,0 +1,26 @@
+\hypertarget{sensor_8h_source}{}\doxysection{sensor.\+h}
+\label{sensor_8h_source}\index{src/iotasks/sensors/sensor.h@{src/iotasks/sensors/sensor.h}}
+\mbox{\hyperlink{sensor_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 }
+\DoxyCodeLine{4 }
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#ifndef IOTASKS\_SENSOR\_H}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#define IOTASKS\_SENSOR\_H}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include <iotasks/iotask.h>}}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#include <utility>}}
+\DoxyCodeLine{11 }
+\DoxyCodeLine{12 }
+\DoxyCodeLine{18 \textcolor{keyword}{class }\mbox{\hyperlink{class_sensor}{Sensor}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_i_otask}{IOtask}} \{}
+\DoxyCodeLine{19 \textcolor{keyword}{public}:}
+\DoxyCodeLine{24     \textcolor{keyword}{inline} \mbox{\hyperlink{class_sensor_a6c93f3eb18e1e23c54785accd3a6058d}{Sensor}}(std::string name, \textcolor{keywordtype}{int} key, \textcolor{keyword}{const} std::vector<WatchPair>\& s = \{\})}
+\DoxyCodeLine{25         : \mbox{\hyperlink{class_i_otask_ac7671b3e3ac27617e5d390f95d495cca}{IOtask}}(std::move(name), key, s)}
+\DoxyCodeLine{26     \{\}}
+\DoxyCodeLine{27 }
+\DoxyCodeLine{28     \mbox{\hyperlink{class_sensor}{\string~Sensor}}() \textcolor{keyword}{override} = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{29 \};}
+\DoxyCodeLine{30 }
+\DoxyCodeLine{31 \textcolor{preprocessor}{\#endif }\textcolor{comment}{//IOTASKS\_SENSOR\_H}}
+
+\end{DoxyCode}

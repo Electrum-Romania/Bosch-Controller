@@ -1,0 +1,43 @@
+\hypertarget{pool_8h_source}{}\doxysection{pool.\+h}
+\label{pool_8h_source}\index{src/ptasks/pool.h@{src/ptasks/pool.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef PTASKS\_POOL\_H}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define PTASKS\_POOL\_H}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include <\mbox{\hyperlink{controller_8h}{controller.h}}>}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include <ptasks/ptask.h>}}
+\DoxyCodeLine{6 }
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include <condition\_variable>}}
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include <latch>}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#include <mutex>}}
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#include <thread>}}
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include <queue>}}
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#include <vector>}}
+\DoxyCodeLine{13 }
+\DoxyCodeLine{14 \textcolor{keyword}{class }\mbox{\hyperlink{class_ptask_pool}{PtaskPool}} \{}
+\DoxyCodeLine{15 \textcolor{keyword}{private}:}
+\DoxyCodeLine{16     \textcolor{keyword}{struct }Job \{}
+\DoxyCodeLine{17         \mbox{\hyperlink{class_ptask}{Ptask}}*         ptask;}
+\DoxyCodeLine{18         \mbox{\hyperlink{struct_pdata}{Pdata}}*         pdata;}
+\DoxyCodeLine{19         \textcolor{keyword}{const} \mbox{\hyperlink{struct_options}{Options}}* options;}
+\DoxyCodeLine{20         std::latch\&    done;}
+\DoxyCodeLine{21     \};}
+\DoxyCodeLine{22 }
+\DoxyCodeLine{23     std::mutex              queue\_mutex;}
+\DoxyCodeLine{24     std::condition\_variable mutex\_condition;}
+\DoxyCodeLine{25     std::queue<Job>   jobs;}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{27     std::vector<std::thread> worker\_threads;}
+\DoxyCodeLine{28 }
+\DoxyCodeLine{29     [[noreturn]] \textcolor{keywordtype}{void} worker\_loop();}
+\DoxyCodeLine{30 \textcolor{keyword}{public}:}
+\DoxyCodeLine{31     \mbox{\hyperlink{class_ptask_pool}{PtaskPool}}();}
+\DoxyCodeLine{32 }
+\DoxyCodeLine{33     \textcolor{keywordtype}{void} run\_tasks(\textcolor{keyword}{const} std::vector<Ptask*>\&, \mbox{\hyperlink{struct_pdata}{Pdata}}*, \textcolor{keyword}{const} \mbox{\hyperlink{struct_options}{Options}}*, std::latch\&);}
+\DoxyCodeLine{34     \textcolor{keywordtype}{void} run\_tasks\_wait(\textcolor{keyword}{const} std::vector<Ptask*>\& tasks, \mbox{\hyperlink{struct_pdata}{Pdata}}* pdata, \textcolor{keyword}{const} \mbox{\hyperlink{struct_options}{Options}}* opt);}
+\DoxyCodeLine{35 \};}
+\DoxyCodeLine{36 }
+\DoxyCodeLine{37 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

@@ -1,0 +1,84 @@
+\hypertarget{class_i_otask}{}\doxysection{IOtask Class Reference}
+\label{class_i_otask}\index{IOtask@{IOtask}}
+
+
+Base class for input/output tasks.  
+
+
+
+
+{\ttfamily \#include $<$iotask.\+h$>$}
+
+
+
+Inheritance diagram for IOtask\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_i_otask__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for IOtask\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_i_otask__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_i_otask_ac7671b3e3ac27617e5d390f95d495cca}{IOtask}} (std\+::string name, int key, const std\+::vector$<$ \mbox{\hyperlink{struct_loggable_1_1_watch_pair}{Watch\+Pair}} $>$ \&s=\{\})
+\begin{DoxyCompactList}\small\item\em Constructs a new \mbox{\hyperlink{class_i_otask}{IOtask}}. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_i_otask_acc71231f3260011c6802b57d48ef9bf8}\label{class_i_otask_acc71231f3260011c6802b57d48ef9bf8}} 
+virtual void {\bfseries compute\+\_\+frame} ()=0
+\item 
+\mbox{\Hypertarget{class_i_otask_a9e24c6752664dd83ab70b3eb6d61c1fd}\label{class_i_otask_a9e24c6752664dd83ab70b3eb6d61c1fd}} 
+void {\bfseries run} ()
+\item 
+\mbox{\Hypertarget{class_i_otask_a389e410395ee3899104ce1cc885645e7}\label{class_i_otask_a389e410395ee3899104ce1cc885645e7}} 
+bool {\bfseries frame} (\mbox{\hyperlink{struct_pdata}{Pdata}} $\ast$, const \mbox{\hyperlink{struct_options}{Options}} $\ast$, std\+::latch $\ast$)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_i_otask_a2f380f491f73d553de7582ccace56352}\label{class_i_otask_a2f380f491f73d553de7582ccace56352}} 
+\mbox{\hyperlink{struct_pdata}{Pdata}} $\ast$ {\bfseries pdata} = nullptr
+\item 
+\mbox{\Hypertarget{class_i_otask_af1606e0c50ed86f20cb5637410cf814c}\label{class_i_otask_af1606e0c50ed86f20cb5637410cf814c}} 
+const \mbox{\hyperlink{struct_options}{Options}} $\ast$ {\bfseries options} = nullptr
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+Base class for input/output tasks. 
+
+This \begin{DoxyNote}{Note}
+Tasks should inherit from \mbox{\hyperlink{class_sensor}{Sensor}} or \mbox{\hyperlink{class_sink}{Sink}} instead of inhereting from \mbox{\hyperlink{class_i_otask}{IOtask}} directly. 
+\end{DoxyNote}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_i_otask_ac7671b3e3ac27617e5d390f95d495cca}\label{class_i_otask_ac7671b3e3ac27617e5d390f95d495cca}} 
+\index{IOtask@{IOtask}!IOtask@{IOtask}}
+\index{IOtask@{IOtask}!IOtask@{IOtask}}
+\doxysubsubsection{\texorpdfstring{IOtask()}{IOtask()}}
+{\footnotesize\ttfamily IOtask\+::\+IOtask (\begin{DoxyParamCaption}\item[{std\+::string}]{name,  }\item[{int}]{key,  }\item[{const std\+::vector$<$ \mbox{\hyperlink{struct_loggable_1_1_watch_pair}{Watch\+Pair}} $>$ \&}]{s = {\ttfamily \{\}} }\end{DoxyParamCaption})}
+
+
+
+Constructs a new \mbox{\hyperlink{class_i_otask}{IOtask}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & \\
+\hline
+{\em key} & The key associated with the task in the interactive debugger. \\
+\hline
+{\em s} & \\
+\hline
+\end{DoxyParams}

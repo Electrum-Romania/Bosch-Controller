@@ -1,0 +1,30 @@
+\hypertarget{line__reader_8h_source}{}\doxysection{line\+\_\+reader.\+h}
+\label{line__reader_8h_source}\index{src/utils/command\_socket/line\_reader.h@{src/utils/command\_socket/line\_reader.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef UTILS\_LINE\_READER}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define UTILS\_LINE\_READER}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include <sockpp/tcp\_connector.h>}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \textcolor{keyword}{constexpr} \textcolor{keywordtype}{size\_t} buffer\_size = 1024;}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{keyword}{class }\mbox{\hyperlink{class_line_reader}{LineReader}} \{}
+\DoxyCodeLine{9 \textcolor{keyword}{private}:}
+\DoxyCodeLine{10     sockpp::tcp\_connector conn;}
+\DoxyCodeLine{11 }
+\DoxyCodeLine{12     std::vector<uint8\_t> buf;}
+\DoxyCodeLine{13 }
+\DoxyCodeLine{14 \textcolor{keyword}{public}:}
+\DoxyCodeLine{15     \mbox{\hyperlink{class_line_reader}{LineReader}}(\textcolor{keyword}{const} std::string\& host, uint16\_t port);}
+\DoxyCodeLine{16 }
+\DoxyCodeLine{17     std::string read\_line();}
+\DoxyCodeLine{18 }
+\DoxyCodeLine{19     \textcolor{comment}{// conn encapsulation}}
+\DoxyCodeLine{20     \textcolor{keyword}{explicit} \textcolor{keyword}{operator} bool();}
+\DoxyCodeLine{21     std::string last\_error\_str();}
+\DoxyCodeLine{22 \};}
+\DoxyCodeLine{23 }
+\DoxyCodeLine{24 \textcolor{preprocessor}{\#endif }\textcolor{comment}{//UTILS\_LINE\_READER}}
+
+\end{DoxyCode}

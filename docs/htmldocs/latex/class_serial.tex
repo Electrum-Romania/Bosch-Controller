@@ -1,0 +1,47 @@
+\hypertarget{class_serial}{}\doxysection{Serial Class Reference}
+\label{class_serial}\index{Serial@{Serial}}
+
+
+Communication with the nucleo board.  
+
+
+
+
+{\ttfamily \#include $<$serial.\+h$>$}
+
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_serial_a80db9a1eeac1acd04a6c6190c6efff94}\label{class_serial_a80db9a1eeac1acd04a6c6190c6efff94}} 
+enum class {\bfseries Command} \{ \newline
+{\bfseries SPED} = 1
+, {\bfseries STER} = 2
+, {\bfseries BRAK} = 3
+, {\bfseries PIDA} = 4
+, \newline
+{\bfseries ENPB} = 5
+, {\bfseries PIDS} = 6
+, {\bfseries MOVE} = 7
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_serial_a99aa9df278fa03e973eef3d9776f9215}\label{class_serial_a99aa9df278fa03e973eef3d9776f9215}} 
+{\bfseries Serial} (const char $\ast$file=\char`\"{}/dev/tty\+ACM0\char`\"{}, speed\+\_\+t baud\+\_\+rate=B19200)
+\item 
+\mbox{\Hypertarget{class_serial_af415a6d0bb40e852b8e9d4ee59f5dcd6}\label{class_serial_af415a6d0bb40e852b8e9d4ee59f5dcd6}} 
+ssize\+\_\+t {\bfseries write\+\_\+command} (Command command\+\_\+number,...)
+\item 
+\mbox{\Hypertarget{class_serial_aa5f13041410df9fd1ea02ae29b64c246}\label{class_serial_aa5f13041410df9fd1ea02ae29b64c246}} 
+std\+::string {\bfseries read\+\_\+response} ()
+\item 
+\mbox{\Hypertarget{class_serial_a83fa48fa8395c2419fcebe782fdc4c1d}\label{class_serial_a83fa48fa8395c2419fcebe782fdc4c1d}} 
+std\+::string {\bfseries read\+\_\+line} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Communication with the nucleo board. 
+
+This class handles serial communication with the nucleo board, which is running the Embedded-\/\+Platform provided by the Bosch team. 

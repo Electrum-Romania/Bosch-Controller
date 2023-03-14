@@ -1,0 +1,38 @@
+\hypertarget{iotask_8h_source}{}\doxysection{iotask.\+h}
+\label{iotask_8h_source}\index{src/iotasks/iotask.h@{src/iotasks/iotask.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef IOTASKS\_IOTASK\_H}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define IOTASKS\_IOTASK\_H}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include <\mbox{\hyperlink{controller_8h}{controller.h}}>}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include <atomic>}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include <latch>}}
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include <semaphore>}}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#include <\mbox{\hyperlink{loggable_8h}{utils/loggable/loggable.h}}>}}
+\DoxyCodeLine{11 }
+\DoxyCodeLine{17 \textcolor{keyword}{class }\mbox{\hyperlink{class_i_otask}{IOtask}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_loggable}{Loggable}} \{}
+\DoxyCodeLine{18 \textcolor{keyword}{private}:}
+\DoxyCodeLine{19     std::binary\_semaphore give\_frame;}
+\DoxyCodeLine{20     std::latch*           done\_frame = \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{21     std::atomic\_bool      busy = \textcolor{keyword}{false};}
+\DoxyCodeLine{22 }
+\DoxyCodeLine{23 \textcolor{keyword}{protected}:}
+\DoxyCodeLine{24     \mbox{\hyperlink{struct_pdata}{Pdata}}*         pdata = \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{25     \textcolor{keyword}{const} \mbox{\hyperlink{struct_options}{Options}}* options = \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{27 \textcolor{keyword}{public}:}
+\DoxyCodeLine{33     \mbox{\hyperlink{class_i_otask_ac7671b3e3ac27617e5d390f95d495cca}{IOtask}}(std::string name, \textcolor{keywordtype}{int} key, \textcolor{keyword}{const} std::vector<WatchPair>\& s = \{\});}
+\DoxyCodeLine{34     \textcolor{keyword}{virtual} \mbox{\hyperlink{class_i_otask}{\string~IOtask}}();}
+\DoxyCodeLine{35 }
+\DoxyCodeLine{36     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} compute\_frame() = 0;}
+\DoxyCodeLine{37 }
+\DoxyCodeLine{38     [[noreturn]] \textcolor{keywordtype}{void} run();}
+\DoxyCodeLine{39     \textcolor{keywordtype}{bool} frame(\mbox{\hyperlink{struct_pdata}{Pdata}}*, \textcolor{keyword}{const} \mbox{\hyperlink{struct_options}{Options}}*, std::latch*);}
+\DoxyCodeLine{40 \};}
+\DoxyCodeLine{41 }
+\DoxyCodeLine{42 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

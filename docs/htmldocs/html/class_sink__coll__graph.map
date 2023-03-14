@@ -1,0 +1,13 @@
+<map id="Sink" name="Sink">
+<area shape="rect" id="node1" title="Base class for output tasks." alt="" coords="1115,57,1165,84"/>
+<area shape="rect" id="node2" href="$class_i_otask.html" title="Base class for input/output tasks." alt="" coords="1001,57,1065,84"/>
+<area shape="rect" id="node3" href="$class_loggable.html" title="Base class for logging classes." alt="" coords="831,5,912,32"/>
+<area shape="rect" id="node4" href="$struct_pdata.html" title="Frame data." alt="" coords="842,139,901,165"/>
+<area shape="rect" id="node5" href="$struct_pressed_keys.html" title="Keys pressed on the keyboard." alt="" coords="476,80,580,107"/>
+<area shape="rect" id="node6" title=" " alt="" coords="443,131,613,173"/>
+<area shape="rect" id="node7" title=" " alt="" coords="193,84,280,111"/>
+<area shape="rect" id="node11" href="$struct_options.html" title="Hot swappable&#45;options." alt="" coords="688,37,760,64"/>
+<area shape="rect" id="node8" title=" " alt="" coords="5,77,144,118"/>
+<area shape="rect" id="node9" title=" " alt="" coords="440,248,616,275"/>
+<area shape="rect" id="node10" title=" " alt="" coords="439,197,617,224"/>
+</map>

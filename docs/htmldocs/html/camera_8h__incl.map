@@ -1,0 +1,15 @@
+<map id="src/iotasks/sensors/camera/camera.h" name="src/iotasks/sensors/camera/camera.h">
+<area shape="rect" id="node1" title="Camera class." alt="" coords="448,5,595,47"/>
+<area shape="rect" id="node2" href="$sensor_8h_source.html" title=" " alt="" coords="213,95,395,121"/>
+<area shape="rect" id="node8" title=" " alt="" coords="691,393,845,420"/>
+<area shape="rect" id="node3" href="$iotask_8h_source.html" title=" " alt="" coords="241,169,367,196"/>
+<area shape="rect" id="node13" title=" " alt="" coords="157,169,217,196"/>
+<area shape="rect" id="node4" href="$controller_8h.html" title="Main concepts used everywhere in the application." alt="" coords="399,319,494,345"/>
+<area shape="rect" id="node9" title=" " alt="" coords="5,244,72,271"/>
+<area shape="rect" id="node10" title=" " alt="" coords="97,244,151,271"/>
+<area shape="rect" id="node11" title=" " alt="" coords="175,244,270,271"/>
+<area shape="rect" id="node12" href="$loggable_8h_source.html" title=" " alt="" coords="294,244,477,271"/>
+<area shape="rect" id="node5" title=" " alt="" coords="177,393,301,420"/>
+<area shape="rect" id="node6" title=" " alt="" coords="325,393,475,420"/>
+<area shape="rect" id="node7" title=" " alt="" coords="499,393,666,420"/>
+</map>

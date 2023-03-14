@@ -1,0 +1,29 @@
+\hypertarget{motors_8h_source}{}\doxysection{motors.\+h}
+\label{motors_8h_source}\index{src/iotasks/sinks/motors/motors.h@{src/iotasks/sinks/motors/motors.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef CONTROLLERPROJECT\_MOTORS\_H}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define CONTROLLERPROJECT\_MOTORS\_H}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include <\mbox{\hyperlink{sink_8h}{iotasks/sinks/sink.h}}>}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include <iotasks/iotask.h>}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include <\mbox{\hyperlink{serial_8h}{utils/serial/serial.h}}>}}
+\DoxyCodeLine{8 }
+\DoxyCodeLine{9 \textcolor{keyword}{class }\mbox{\hyperlink{class_motors}{Motors}} final : \textcolor{keyword}{public} \mbox{\hyperlink{class_sink}{Sink}} \{}
+\DoxyCodeLine{10 \textcolor{keyword}{private}:}
+\DoxyCodeLine{11     \textcolor{keywordtype}{double} current\_motor\_speed\{\};}
+\DoxyCodeLine{12     \textcolor{keywordtype}{double} current\_ster\{\};}
+\DoxyCodeLine{13     \mbox{\hyperlink{class_serial}{Serial}} \&nucleo;}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{15 \textcolor{keyword}{public}:}
+\DoxyCodeLine{16     \textcolor{keyword}{explicit} \mbox{\hyperlink{class_motors}{Motors}}(\mbox{\hyperlink{class_serial}{Serial}}\&);}
+\DoxyCodeLine{17     \mbox{\hyperlink{class_motors}{\string~Motors}}() \textcolor{keyword}{final} = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{18 }
+\DoxyCodeLine{19     \textcolor{keywordtype}{void} compute\_frame() \textcolor{keyword}{final};}
+\DoxyCodeLine{20 \};}
+\DoxyCodeLine{21 }
+\DoxyCodeLine{22 }
+\DoxyCodeLine{23 \textcolor{preprocessor}{\#endif }\textcolor{comment}{//CONTROLLERPROJECT\_MOTORS\_H}}
+
+\end{DoxyCode}
